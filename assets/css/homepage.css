@@ -1,0 +1,59 @@
+#container {
+    margin: 100px;
+}
+
+#logo {
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+    
+}
+
+
+#banner {
+    width: 95%;
+    height: 100px;
+    margin: 0 auto;
+    background: #000000;
+    color: white;
+    text-align: center;
+    font-size: 3em;
+}
+
+#navigation {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#about {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#login {
+    width: 30%;
+    height: auto;
+    margin-left: 25px;
+    
+}
+
+#submit {
+    position: absolute;
+    left: 40%;
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.margin {
+    margin: 0 auto;
+}
