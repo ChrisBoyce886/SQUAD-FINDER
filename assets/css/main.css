@@ -36,6 +36,7 @@
 }
 
 #google-maps-display {
+    height: 50%
     width: 50%;
 }
 
@@ -68,3 +69,4 @@
 .search {
     display: flex;
 }
+

@@ -62,7 +62,7 @@ There are 6 inputs and 2 buttons on the main page that need script.
 var map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById('google-maps-display'), {
-    center: {lat: 35.227, lng: -80.843},
+    center: {lat: 35.227, lng: -80.843}, //Used Charlotte LAT & LONG as the default
     zoom: 6
   });
   infoWindow = new google.maps.InfoWindow;
