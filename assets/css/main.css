@@ -1,0 +1,70 @@
+#banner {
+    width: 100%;
+    height: auto;
+}
+
+#container {
+    margin:50px;
+    display: flex;
+}
+
+
+#navigation {
+    display: flex;
+}
+
+#add-event {
+    width: 33.3%;
+}
+
+
+#search-events {
+    width: auto;
+    height: 100px;
+    float: right;
+    margin-top: -8%;
+}
+
+#events-display {
+    width: 100%;
+    overflow: scroll;
+}
+
+#API-display {
+    text-align: center;
+    height: 500px;
+}
+
+#google-maps-display {
+    width: 50%;
+}
+
+#yelp-display {
+    width: 50%;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    
+}
+
+
+.nav {
+    width: 95%;
+    padding-top: 20px;
+    
+}
+
+.card-body {
+    
+}
+
+.inputFormat {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.search {
+    display: flex;
+}
