@@ -1,3 +1,4 @@
+window.onload = function() {
 /*There are 2 inputs and 1 button on the homepage.  
          
     Button 1 - #submit     
@@ -5,9 +6,10 @@
 
 */
 //creates a variable to store input from form
-var user = $('#user').val();
-var password = $('#password').val();
-
+    var user = $('#user').val();
+    var password = $('#password').val();
+    console.log(user);
+    console.log(password);
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -28,15 +30,27 @@ There are 6 inputs and 2 buttons on the main page that need script.
 */
 
 //creates a variable to store input from form for button 1.
-var eventCreator = $('#squadLeader').val();
-var eventName = $('#inputEventName').val();
-var dateTime = $('#DT').val();
-var location = $('#location').val();
-var eventDescription = $('#eventDescription').val();
-var teamRoster = $('#roster').val();
+    var eventCreator = $('#squadLeader').val();
+    var eventName = $('#inputEventName').val();
+    var dateTime = $('#DT').val();
+    var location = $('#location').val();
+    var eventDescription = $('#eventDescription').val();
+    var teamRoster = $('#roster').val();
 
-//creates a variable to store input from form for button 2.
-var search = $('#searchInput').val();
+    console.log(eventCreator);
+    console.log(eventName);
+    console.log(dateTime);
+    console.log(location);
+    console.log(eventDescription);
+    console.log(teamRoster)
+
+    //creates a variable to store input from form for button 2.
+    var search = $('#searchInput').val();
+    console.log(search);
+
+
+
+
 
 
 
@@ -60,6 +74,11 @@ var search = $('#searchInput').val();
 //////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+
+
+}
 
 
 
