@@ -1,45 +1,42 @@
+body {
+    height: auto;
+    background-image: url("../images/3ds_grass_texture241_173.jpg");
+    background-position: fixed center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+
 #container {
-    margin: 100px;
+    margin: 50px;
+    color:#008000;
 }
 
 #logo {
     width: 200px;
     height: 200px;
-    margin: 10px auto;
+    margin: 0 auto;
     
 }
 
 
-#banner {
-    width: 95%;
-    height: 100px;
-    margin: 0 auto;
-    background: #000000;
-    color: white;
-    text-align: center;
-    font-size: 3em;
-}
-
-#navigation {
-    width: 95%;
-    margin: 0 auto;
-}
 
 #about {
-    width: 70%;
-    margin: 0 auto;
+   margin: 0 auto;
 }
 
 #login {
-    width: 30%;
+
     height: auto;
-    margin-left: 25px;
+    margin: 0 auto;
+    padding: 20px;
     
 }
 
 #submit {
-    position: absolute;
-    left: 40%;
+    margin: 0 auto;
+    
 }
 
 .form-group {
@@ -57,3 +54,17 @@
 .margin {
     margin: 0 auto;
 }
+
+.card-body {
+    width: 36rem;
+}
+
+.card-text {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.btn {
+    margin: 0 auto;
+}
+

@@ -16,7 +16,7 @@ window.onload = function() {
 /* 
 There are 6 inputs and 2 buttons on the main page that need script. 
 
-    Button 1 :  #addEvent
+    Button 1 :  #addBtn
         On "click" needs to --> 
             1)Retrieve input from form and list the event in the event display area.
             2)Connect to both API's 
