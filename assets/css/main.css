@@ -19,20 +19,23 @@
 
 
 #search-events {
-    width: auto;
-    height: 100px;
-    float: right;
-    margin-top: -8%;
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    text-align: right;
 }
 
 #events-display {
     width: 100%;
+    height: 600px;
     overflow: scroll;
+    
 }
 
 #API-display {
     text-align: center;
     height: 500px;
+    
 }
 
 #google-maps-display {
@@ -47,6 +50,11 @@
     width: 100px;
     height: 100px;
     
+}
+
+
+#events-dump {
+
 }
 
 
@@ -67,4 +75,16 @@
 
 .search {
     display: flex;
+    float: right;
+}
+
+.no-highlight {
+    color: #889088;
+    text-align: center;
+}
+
+.highlight {
+    background: #889088;
+    color: white;
+    text-align: center;
 }

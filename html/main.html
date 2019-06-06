@@ -41,7 +41,7 @@
     <div id="container">
         
         <!--Event Input Area-->
-        <div id="add-event" class="card card-body">
+        <div id="add-event" class="card card-body shadow p-3 mb-5 bg-white rounded">
             
             <h4 class="card-title">Add Event:</h4>
 
@@ -75,29 +75,58 @@
 
         
         <!--Events Display Area-->
-        <div id="events-display">
+        <div id="events-display" class="shadow p-3 mb-5 bg-white rounded">
 
-          <div class="card-body">
-              <h4 class="card-title">Events Display Area</h4>
-              <p class="card-text">This is where a list of events will be displayed.</p>
-
+          
+        
             <!--Search Events Area-->
-            <div id="search-events">
-              <div class="card-body">
-                <form class="search" action="/action_page.php" style="margin:auto;max-width:95%">
+              
+                <form class="search" action="/action_page.php">
                   <input id="searchInput" type="text" placeholder="Search Events" name="eventSearch">
                   <button type="submit" id="eventSearch">Search</button>
                 </form>
+        
+
+            
+
+            <h4 class="card-title">Events Display Area</h4>
+            <div id="events-dump">
+              <!--Dump Events Here-->
+              <div class="no-highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
               </div>
 
-            </div>
+              <div class="highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
 
-            <div id="display-events">
-              <!--Dump Events Here-->
+              <div class="no-highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
+
+              <div class="no-highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
               
-            </div>
-    
-            </div>
+
+              
+            </div>    
     
         </div>
 
@@ -105,7 +134,7 @@
  
     <!--Lower Section: API Display-->
     <div id="API-display">
-      <div class="card-body">
+     
                 
         <h4 class="card-title">Google & Yelp API Display Area</h4>
         <p class="card-text">This area will be divided to show google maps api and yelp reviews.</p>
@@ -118,7 +147,7 @@
         <div id="yelp-display"></div>
               
               
-      </div>
+      
     </div>  
 
       

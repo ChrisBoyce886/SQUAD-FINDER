@@ -1,5 +1,8 @@
 body {
     height: 900px;
+    background-image: url("../images/3ds_grass_texture241_173.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 
