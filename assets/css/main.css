@@ -14,9 +14,13 @@
 }
 
 #add-event {
-    width: 33.3%;
+    margin-right:  20px;
 }
 
+#addBtn {
+    margin-top: 20px;
+    margin-left: 35%;
+}
 
 #search-events {
     width: 400px;
@@ -27,7 +31,7 @@
 
 #events-display {
     width: 100%;
-    height: 600px;
+    height: 800px;
     overflow: scroll;
     
 }

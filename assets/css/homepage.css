@@ -1,8 +1,10 @@
 body {
-    height: 900px;
+    height: auto;
     background-image: url("../images/3ds_grass_texture241_173.jpg");
-    background-position: center;
+    background-position: fixed center;
     background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 
 
@@ -14,7 +16,7 @@ body {
 #logo {
     width: 200px;
     height: 200px;
-    margin: 20px auto;
+    margin: 0 auto;
     
 }
 
