@@ -16,58 +16,51 @@
         <img src="../assets/images/Squad.jpg">
     </div>
 
-    <!--Navigation-->
-    <div id="navigation">
-      
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link active" href="../html/homepage.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../html/main.html">Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../html/main.html">Add Event</a>
-        </li>
-      </ul>
-     
-    </div>
+
 
     <!--Container-->
     <div id="container" class="flex">
 
-      <!--About-->
-      <div id="about" class="text-center">
-        <img id="logo" src="../assets/images/appLogo.PNG" alt="logo">
-        <div class="card-body">
-          <h4 class="card-title">About</h4>
-          <p class="card-text">Users will have the ability to create an event in the application with all of the details necessary such as total number of members, 
-              location, etc. Once an event is created, the website will pull information from the Google Maps/Yelp APIs to show the information on 
-              the locations. People will then be able to search for events in their area (based on a specific radius) and sign up for the event.</p>
-        </div>
-      </div>
-
-      <!--User Login-->
-      <div id="login" class="card text-left">
-        <div class="card-body">
-
-          <h4 class="card-title center">User Login Area</h4>
+      <!--About & User Login-->
+      <div id="about" class="text-center shadow p-3 mb-5 bg-white rounded">
+          <img id="logo" class="card-img-top " src="../assets/images/appLogo.PNG" alt="logo">
           
-          <form>
-            <div class="form-group">
-              <label for="user">Email address</label>
-              <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter email">
-              
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input id="password" type="password" class="form-control" placeholder="Password">
-            </div>
+        <!--User Login-->
+        <div id="login">
 
-            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-          </form>
+            <h4 class="card-title center">User Login Area</h4>
+            
+            <form>
+              <div class="form-group">
+                <label for="user">Email address</label>
+                <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter email">
+                
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" class="form-control" placeholder="Password">
+              </div>
+              <div id="submit">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </form>
+          
         </div>
+
+        <!--About card-->
+          <div class="card text-white bg-success mb-3">
+              <div class="card-header">About</div>
+              <div class="card-body">
+                <p class="card-text">Users will have the ability to create an event in the application with all of the details necessary such as total number of members, 
+                    location, etc. Once an event is created, the website will pull information from the Google Maps/Yelp APIs to show the information on 
+                    the locations. People will then be able to search for events in their area (based on a specific radius) and sign up for the event.</p>
+              </div>
+            </div>     
+          
+      
       </div>
+
+
         
     </div>
    
@@ -79,4 +72,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+
 </html>
