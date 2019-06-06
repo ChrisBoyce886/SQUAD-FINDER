@@ -1,7 +1,3 @@
-#banner {
-    width: 100%;
-    height: auto;
-}
 
 #container {
     margin:50px;
@@ -14,25 +10,35 @@
 }
 
 #add-event {
-    width: 33.3%;
+    margin-right:  20px;
 }
 
+#addBtn {
+    margin-top: 20px;
+    margin-left: 35%;
+}
 
 #search-events {
-    width: auto;
-    height: 100px;
-    float: right;
-    margin-top: -8%;
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    text-align: right;
 }
 
 #events-display {
     width: 100%;
+    height: 800px;
     overflow: scroll;
+    
 }
 
 #API-display {
+    display: flex;
     text-align: center;
+    width: 90%;
     height: 500px;
+    margin: 0 auto;
+    
 }
 
 #google-maps-display {
@@ -47,19 +53,21 @@
 #logo {
     width: 100px;
     height: 100px;
+    margin: 0 auto;
     
 }
 
+a {
+    margin: 0 auto;
+}
+#events-dump {
 
-.nav {
-    width: 95%;
-    padding-top: 20px;
-    
 }
 
-.card-body {
-    
+.center {
+    text-align: center;
 }
+
 
 .inputFormat {
     width: 100%;
@@ -68,5 +76,22 @@
 
 .search {
     display: flex;
+<<<<<<< HEAD
 }
 
+=======
+    float: right;
+}
+
+.no-highlight {
+    color: #889088;
+    text-align: center;
+}
+
+.highlight {
+    background: rgb(136,144,136);
+    background: radial-gradient(circle, rgba(136,144,136,1) 0%, rgba(136,144,136,1) 35%, rgba(255,255,255,1) 100%);
+    color: white;
+    text-align: center;
+}
+>>>>>>> ad05ea803f67d507548788033f0cc7b575eef60c
