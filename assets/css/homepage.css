@@ -21,16 +21,6 @@ body {
 }
 
 
-#banner {
-    width: 95%;
-    height: 100px;
-    margin: 0 auto;
-    background: #000000;
-    color: white;
-    text-align: center;
-    font-size: 3em;
-}
-
 
 #about {
    margin: 0 auto;

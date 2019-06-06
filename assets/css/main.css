@@ -1,7 +1,3 @@
-#banner {
-    width: 100%;
-    height: auto;
-}
 
 #container {
     margin:50px;
@@ -37,8 +33,11 @@
 }
 
 #API-display {
+    display: flex;
     text-align: center;
+    width: 90%;
     height: 500px;
+    margin: 0 auto;
     
 }
 
@@ -53,24 +52,21 @@
 #logo {
     width: 100px;
     height: 100px;
+    margin: 0 auto;
     
 }
 
-
+a {
+    margin: 0 auto;
+}
 #events-dump {
 
 }
 
-
-.nav {
-    width: 95%;
-    padding-top: 20px;
-    
+.center {
+    text-align: center;
 }
 
-.card-body {
-    
-}
 
 .inputFormat {
     width: 100%;
@@ -88,7 +84,8 @@
 }
 
 .highlight {
-    background: #889088;
+    background: rgb(136,144,136);
+    background: radial-gradient(circle, rgba(136,144,136,1) 0%, rgba(136,144,136,1) 35%, rgba(255,255,255,1) 100%);
     color: white;
     text-align: center;
 }
