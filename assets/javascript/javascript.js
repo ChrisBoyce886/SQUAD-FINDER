@@ -1,4 +1,85 @@
- window.onload = function() {
+///////////////////////////////////////////////////////////////////////////////////////
+                                    //GOOGLE API SECTION
+//////////////////////////////////////////////////////////////////////////////////////
+
+  //Geolocation
+var parkLocations = [
+  ["Freedom Park, 35.193978, -80.842636"],
+  ["Frazier Park, 35.232251, -80.858032"],
+  ["Frazier Park - Tennis & Basketball, 35.234098, -80.856477"],
+  ["Martin Luther King Park - Tennis & Basketball, 35.243901,-80.871059"],
+  ["Revolution Park, 35.214758, -80.876093"],
+  ["Southside Park, 35.207150, -80.872784"],
+  ["Latta Park, 35.209832,-80.850605"],
+]
+
+     window.initMap = function () {
+        map = new google.maps.Map(document.getElementById('google-maps-display'), {
+          center: {lat: 35.227085, lng: -80.843124}, //Charlotte as default map location
+          zoom: 11
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location Found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+      // var userMarker = new google.maps.Marker({
+      //   position: pos,
+      //   animation : google.maps.Animation.DROP,
+      //   map : map,
+      //   draggable: true
+      // })
+
+      // var searchBox = new google.maps.places.SearchBox(document.getElementById('location-SearchBox'));
+
+      // google.maps.event.addListener(searchBox, 'places_changed', function() {
+      //         var places = searchBox.getPlaces();
+      //         var bounds = new google.maps.LatLngBounds();
+      //         var i, place;
+
+      //         for (i = 0; place = places[i]; i++) {
+      //           console.log(place.geometry.location)
+      //             bounds.extend(place.geometry.location);
+      //             userMarker.setPosition(place.geometry.location);
+      //         }
+      //         map.fitBounds(bounds);
+      //         map.setZoom(15);
+      //     })
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+                                    //FIREBASE SECTION
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+      window.onload = function() {
  /*There are 2 inputs and 1 button on the homepage.  
          
 //     Button 1 - #submit     
@@ -53,55 +134,8 @@ There are 6 inputs and 2 buttons on the main page that need script.
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////
-                                    //GOOGLE API SECTION
-//////////////////////////////////////////////////////////////////////////////////////
- 
-//Geolocation
-var parkLocations = [
-  ["Freedom Park, 35.193978, -80.842636"],
-  ["Frazier Park, 35.232251, -80.858032"],
-  ["Frazier Park - Tennis & Basketball, 35.234098, -80.856477"],
-  ["Martin Luther King Park - Tennis & Basketball, 35.243901,-80.871059"],
-  ["Revolution Park, 35.214758, -80.876093"],
-  ["Southside Park, 35.207150, -80.872784"],
-  ["Latta Park, 35.209832,-80.850605"],
 
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('google-maps-display'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 11
-        });
-        infoWindow = new google.maps.InfoWindow;
 
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
       
 
     
@@ -118,17 +152,6 @@ var parkLocations = [
 
     var queryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInputAddress;   
 
-<<<<<<< HEAD
-
-
-// }
-
-
-
-
-
-
-=======
     $.ajax({
       url: queryUrl, 
       method: "GET", 
@@ -141,7 +164,6 @@ var parkLocations = [
     });
   };
 };
->>>>>>> 6726e1d3586d8791dbc9c69f2308a9f7bbc65af4
 
 
 
@@ -149,8 +171,4 @@ var parkLocations = [
 
 
 
-
-///////////////////////////////////////////////////////////////////////////////////////
-                                    //FIREBASE SECTION
-//////////////////////////////////////////////////////////////////////////////////////
 
