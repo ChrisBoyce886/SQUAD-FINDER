@@ -38,12 +38,23 @@
     width: 90%;
     height: 500px;
     margin: 0 auto;
+   
     
 }
 
+#map-card-title {
+    height: 10%;
+    width: 100%;
+}
+
+#google-maps-box {
+    height: 100%;
+    width: 100%;
+}
+
 #google-maps-display {
-    height: 50%
-    width: 50%;
+    height: 100%;
+    width: 100%;   
 }
 
 #yelp-display {
