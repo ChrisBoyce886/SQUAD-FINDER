@@ -1,8 +1,9 @@
 body {
     height: auto;
     background-image: url("../images/3ds_grass_texture241_173.jpg");
-    background-position: fixed center;
+    background-position: center center;
     background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     
 }
@@ -25,17 +26,14 @@ body {
 }
 
 #login {
-
+    width: auto;
     height: auto;
     margin: 0 auto;
     padding: 20px;
     
 }
 
-#submit {
-    margin: 0 auto;
-    
-}
+
 
 .form-group {
     margin: 10px;
