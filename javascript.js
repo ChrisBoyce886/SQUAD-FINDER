@@ -119,25 +119,24 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   let database = firebase.database();
-  let userSignedIn = false;
 
   
 
- $("#submitBtn").click(function() {
+ $("#submit").click(function() {
 
   event.preventDefault()
   // let users = firebase.database().child('users/')
 console.log("hey")
 
-    let email = document.querySelector("#exampleInputEmail1")
-    let username = document.querySelector("#exampleUserName")
-    let password = document.querySelector("#exampleInputPassword1")
+    let email = document.querySelector("#user")
+    // let username = document.querySelector("#exampleUserName")
+    let password = document.querySelector("#password")
     
 
 
 firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
     .then(function(user) {
-        displayName = username.value
+        displayName = email.value // change this back to username.value
         writeUserData(displayName, user) // possibly only need to pass displayName as parameter
     })
 
@@ -152,16 +151,117 @@ function writeUserData(displayName, user) { //possibly only need to pass in disp
 
 firebase.auth().onAuthStateChanged(user => {
 
-    if(user && userSignedIn === false) {
+    if(user) {
       window.location = 'main.html'; //After successful login, user will be redirected to main.html
         }
-        userSignedIn = true;
+       
 });
 
 $("#exampleInputEmail1").val("");
 $("#exampleUserName").val("");
 $("#exampleInputPassword1").val("");
 }
+
+
+
+// MainPage Add Event:
+
+//converting Event Date and Time
+ Date.prototype.toDatetimeLocal = 
+    function toDatetimeLocal() {
+      var 
+        date = this,
+        ten = function (i) {
+            return (i < 10 ? '0' : '') + i;
+        };
+        YYYY = date.getFullYear(),
+        MM = ten(date.getMonth() + 1),
+        DD = ten(date.getDate()),
+        HH = ten(date.getHours()),
+        II = ten(date.getMinutes()),
+        SS = ten(date.getSeconds())
+        ;
+        return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
+    }
+
+document.getElementById("addBtn").addEventListener("click", e => {
+  event.preventDefault()
+
+    let user = firebase.auth().currentUser;  
+    console.log(user)  
+
+    // if(user)
+    //     console.log(db.collection("users").doc(user.uid))
+    // else
+    //     alert('user not logged in')
+
+  let DT = document.getElementById("DT")
+  let eventDescription = document.querySelector("#eventDescription")
+  eventDescription = eventDescription.value
+  let eventLocation = document.querySelector("#location")
+  eventLocation = eventLocation.value
+  let eventName = document.querySelector("#inputEventName")
+  eventName = eventName.value
+  let eventRef = firebase.database().ref("events")
+  let newEventRef = eventRef.push();
+  let ISOString = new Date(DT.value).toISOString();
+  let finalTime = DT.value = new Date(ISOString).toDatetimeLocal();
+  console.log(finalTime)
+
+console.log(eventDescription)
+
+
+      newEventRef.set({
+      
+    leader: user.uid,
+    name: eventName,
+    eventDate: finalTime,
+    location: eventLocation,
+    description: eventDescription,
+    })
+});
+
+// var eventRef = ref.child(key)
+let eventRef = firebase.database().ref("events")
+eventRef.on('child_added', function(childSnapshot){
+
+  console.log(childSnapshot.val().name);
+  
+  let eventButton = $("<button>").addClass("eventButton")
+  let eventTitle = $("<p>").text(childSnapshot.val().name)
+  let eventLeader = $("<p>").text(childSnapshot.val().leader)
+  let eventDate = $("<p>").text(childSnapshot.val().eventDate)
+  let eventLocation = $("<p>").text(childSnapshot.val().location)
+
+  $(eventDate).append(eventLocation)
+  $(eventLeader).append(eventDate)
+  $(eventTitle).append(eventLeader)
+  $(eventButton).append(eventTitle)
+
+  $("#event1").prepend(eventButton)
+
+
+
+
+
+})
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
