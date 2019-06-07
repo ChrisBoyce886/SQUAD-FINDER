@@ -1,15 +1,15 @@
-// window.onload = function() {
-// /*There are 2 inputs and 1 button on the homepage.  
+ window.onload = function() {
+ /*There are 2 inputs and 1 button on the homepage.  
          
 //     Button 1 - #submit     
 //         On "click" needs to authenticate user and password. 
 
 // */
-// //creates a variable to store input from form
-//     var user = $('#user').val();
-//     var password = $('#password').val();
-//     console.log(user);
-//     console.log(password);
+//creates a variable to store input from form
+     var user = $('#user').val();
+     var password = $('#password').val();
+     console.log(user);
+     console.log(password);
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -30,29 +30,27 @@ There are 6 inputs and 2 buttons on the main page that need script.
 */
 
 //creates a variable to store input from form for button 1.
-    // var eventCreator = $('#squadLeader').val();
-    // var eventName = $('#inputEventName').val();
-    // var dateTime = $('#DT').val();
-    // var location = $('#location').val();
-    // var eventDescription = $('#eventDescription').val();
-    // var teamRoster = $('#roster').val();
+    var eventCreator = $('#squadLeader').val();
+    var eventName = $('#inputEventName').val();
+    var dateTime = $('#DT').val();
+    var location = $('#location').val();
+    var eventDescription = $('#eventDescription').val();
+    var teamRoster = $('#roster').val();
 
-    // console.log(eventCreator);
-    // console.log(eventName);
-    // console.log(dateTime);
-    // console.log(location);
-    // console.log(eventDescription);
-    // console.log(teamRoster)
+    console.log(eventCreator);
+    console.log(eventName);
+    console.log(dateTime);
+    console.log(location);
+    console.log(eventDescription);
+    console.log(teamRoster)
 
-    // //creates a variable to store input from form for button 2.
-    // var search = $('#searchInput').val();
-    // console.log(search);
-
-
+    //creates a variable to store input from form for button 2.
+    var search = $('#searchInput').val();
+    console.log(search);
 
 
-// 36.227 lat
-// -80.843 long
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -106,18 +104,7 @@ var parkLocations = [
       }
       
 
-      // function initMap() {
-      //   // The location of Uluru
-      //   var uluru = {lat: -25.344, lng: 131.036};
-      //   // The map, centered at Uluru
-      //   var map = new google.maps.Map(
-      //       document.getElementById('google-maps-display'), {zoom: 4, center: uluru});
-      //   // The marker, positioned at Uluru
-      //   var marker = new google.maps.Marker({position: uluru, map: map});
-      //   }
-
-
-
+    
 
 
 
@@ -125,9 +112,13 @@ var parkLocations = [
                                     //YELP API SECTION
 //////////////////////////////////////////////////////////////////////////////////////
 
+  var userInputAddress = "New York City";
 
+  function displayLocationDetails() {
 
+    var queryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInputAddress;   
 
+<<<<<<< HEAD
 
 
 // }
@@ -137,6 +128,20 @@ var parkLocations = [
 
 
 
+=======
+    $.ajax({
+      url: queryUrl, 
+      method: "GET", 
+      headers: {
+       Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+      }
+    })
+    .then(function(response) {
+      var businessId = response.data;
+    });
+  };
+};
+>>>>>>> 6726e1d3586d8791dbc9c69f2308a9f7bbc65af4
 
 
 
