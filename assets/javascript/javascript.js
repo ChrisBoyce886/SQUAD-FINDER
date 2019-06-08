@@ -3,74 +3,184 @@
 // ///////////////////////////////////////////////////////////////////////////////////////
 //                                     //GOOGLE API SECTION
 // //////////////////////////////////////////////////////////////////////////////////////
-// //google.maps.event.addDomListener(window, 'load', initMap);
-
-// //Geolocation
+//Geolocation 
+// var marker
 // var parkLocations = [
-//   ["Freedom Park, 35.193978, -80.842636"],
-//   ["Frazier Park, 35.232251, -80.858032"],
-//   ["Frazier Park - Tennis & Basketball, 35.234098, -80.856477"],
-//   ["Martin Luther King Park - Tennis & Basketball, 35.243901,-80.871059"],
-//   ["Revolution Park, 35.214758, -80.876093"],
-//   ["Southside Park, 35.207150, -80.872784"],
-//   ["Latta Park, 35.209832,-80.850605"],
+//     {name: "FreedomPark", lat: 35.193978, lng: -80.842636}
+//     // [name: "Frazier Park, lat: 35.232251, lng: -80.858032"],
+//     // [name: "Revolution Park, lat: 35.214758, lng: -80.876093"],
+//     // ["Southside Park, 35.207150, -80.872784"],
+//     // ["Bryant Park, 35.227278, -80.870150"],
+//     // ["Kirk Farm Park, 35.321008, -80.731887"],
+//     // ["Nevin Community Park, 35.302511, -80.834128"],
+//     // ["Renaissance Park, 35.180768, -80.907574"]
 // ]
-//       function initMap() {
-//         map = new google.maps.Map(document.getElementById('google-maps-display'), {
-//           center: {lat: 35.227085, lng: -80.843124},
-//           zoom: 11
-//         });
-//         infoWindow = new google.maps.InfoWindow;
+function initMap() {
+  var mapCenter = {lat: 35.227085, lng: -80.843124}
+  map = new google.maps.Map(document.getElementById('google-maps-display'), {
+    center: mapCenter,
+    zoom: 11
+  });   
 
-//         // Try HTML5 geolocation.
-//         if (navigator.geolocation) {
-//           navigator.geolocation.getCurrentPosition(function(position) {
-//             var pos = {
-//               lat: position.coords.latitude,
-//               lng: position.coords.longitude
-//             };
+  // var marker = new google.maps.Marker({
+  //   position: parkLocations.lat.lng,
+  //   map: map,
+  //   title: "FreedomPark",
+  //   optimized: false
+  // }); 
 
-//             infoWindow.setPosition(pos);
-//             infoWindow.setContent('Location found.');
-//             infoWindow.open(map);
-//             map.setCenter(pos);
-//           }, function() {
-//             handleLocationError(true, infoWindow, map.getCenter());
-//           });
-//         } else {
-//           // Browser doesn't support Geolocation
-//           handleLocationError(false, infoWindow, map.getCenter());
+// Create the search box and link it to the UI element.
+
+var input = document.getElementById('location-SearchBox');
+var searchBox = new google.maps.places.SearchBox(input);
+map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+// Bias the SearchBox results towards current map's viewport.
+map.addListener('bounds_changed', function() {
+  searchBox.setBounds(map.getBounds());
+});
+
+var markers = [];
+// Listen for the event fired when the user selects a prediction and retrieve
+// more details for that place.
+searchBox.addListener('places_changed', function() {
+  var places = searchBox.getPlaces();
+
+  if (places.length == 0) {
+    return;
+  }
+
+  // Clear out the old markers.
+  markers.forEach(function(marker) {
+    marker.setMap(null);
+  });
+  markers = [];
+
+  // For each place, get the icon, name and location.
+  var bounds = new google.maps.LatLngBounds();
+  places.forEach(function(place) {
+    if (!place.geometry) {
+      console.log("Returned place contains no geometry");
+      return;
+    }
+    var icon = {
+      url: place.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(25, 25)
+    };
+
+    // Create a marker for each place.
+    markers.push(new google.maps.Marker({
+      map: map,
+      icon: icon,
+      title: place.name,
+      position: place.geometry.location
+    }));
+
+    if (place.geometry.viewport) {
+      // Only geocodes have viewport.
+      bounds.union(place.geometry.viewport);
+    } else {
+      bounds.extend(place.geometry.location);
+    }
+  });
+  map.fitBounds(bounds);
+});
+
+infoWindow = new google.maps.InfoWindow;
+
+  //Try HTML5 geolocation.
+  function geolocation (){
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: We could not find your location.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+
+}geolocation()
+}
+
+// function newLocation(newLat,newLng)
+// {
+// 	map.setCenter({
+// 		lat : newLat,
+// 		lng : newLng
+// 	});
+// }
+
+// google.maps.event.addDomListener(window, 'load', initMap);
+
+// //Setting Location with jQuery
+// $(document).ready(function ()
+// {
+//     $("#parkLocation").on('click', function ()
+//     {
+// 	  newLocation(48.1293954,11.556663);
+// 	});
+
+// 	$("#2").on('click', function ()
+//     {
+// 	  newLocation(40.7033127,-73.979681);
+// 	});
+
+//     $("#3").on('click', function ()
+//     {
+// 	  newLocation(55.749792,37.632495);
+// 	});
+// });
+
+
+
+
+
+
+
+
+//Markers to create Hover-Over
+//   var marker = new google.maps.Marker({
+//     position: pos,
+//     map: map,
+//     draggable: true
+// });
+
+// var searchBox = new google.maps.places.SearchBox(document.getElementById('location-SearchBox'));
+
+// google.maps.event.addDomListener(searchBox, 'places_changed', function() {
+//         var places = searchBox.getPlaces();
+//         var bounds = new google.maps.LatLngBounds();
+//         var i, place;
+
+//         for (i = 0; place = places[i]; i++) {
+//             bounds.extend(place.geometry.location);
+//             marker.setPosition(place.geometry.location);
 //         }
-//       }
-
-//       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//         infoWindow.setPosition(pos);
-//         infoWindow.setContent(browserHasGeolocation ?
-//                               'Error: We could not find your location.' :
-//                               'Error: Your browser doesn\'t support geolocation.');
-//         infoWindow.open(map);
-//       }
-
-//       var marker = new google.maps.Marker({
-//         position: pos,
-//         map: map,
-//         draggable: true
-//     });
-
-//     var searchBox = new google.maps.places.SearchBox(document.getElementById('location-SearchBox'));
-
-//     google.maps.event.addDomListener(searchBox, 'places_changed', function() {
-//             var places = searchBox.getPlaces();
-//             var bounds = new google.maps.LatLngBounds();
-//             var i, place;
-
-//             for (i = 0; place = places[i]; i++) {
-//                 bounds.extend(place.geometry.location);
-//                 marker.setPosition(place.geometry.location);
-//             }
-//             map.fitBounds(bounds);
-//             map.setZoom(12);
-//         })
+//         map.fitBounds(bounds);
+//         map.setZoom(12);
+//     })
 // ///////////////////////////////////////////////////////////////////////////////////////
 //                                     //FIREBASE SECTION
 // //////////////////////////////////////////////////////////////////////////////////////
