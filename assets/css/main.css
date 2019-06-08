@@ -1,3 +1,11 @@
+body {
+    height: auto;
+    background-image: url("../images/3ds_grass_texture241_173.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 
 #container {
     margin:50px;
@@ -38,11 +46,23 @@
     width: 90%;
     height: 500px;
     margin: 0 auto;
+   
     
 }
 
+#map-card-title {
+    height: 10%;
+    width: 100%;
+}
+
+#google-maps-box {
+    height: 100%;
+    width: 100%;
+}
+
 #google-maps-display {
-    width: 50%;
+    height: 100%;
+    width: 100%;   
 }
 
 #yelp-display {
@@ -77,6 +97,10 @@ a {
 
 .search {
     display: flex;
+<<<<<<< HEAD
+}
+
+=======
     float: right;
 }
 
@@ -91,3 +115,4 @@ a {
     color: white;
     text-align: center;
 }
+>>>>>>> ad05ea803f67d507548788033f0cc7b575eef60c
