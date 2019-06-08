@@ -135,19 +135,22 @@
           <input class="form-control" id="location-SearchBox" type="text" placeholder="Enter Location">
         </div>
         <!--Yelp API-->
-        <div id="yelp-display"></div>
-              
-              
+        <div>
+          <p id="yelp-name"></p>
+          <p id="yelp-rating"></p>
+          <p id="yelp-phone-number"></p>
+        </div>
       
+
     </div>  
    
       
     <!-- JavaScript -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTwlnvuNPf2SQsdtovRTH6dyTablFaooE&callback=initMap">                                                    
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTwlnvuNPf2SQsdtovRTH6dyTablFaooE&libraries=places&callback=initMap">                                                    
     </script>
     <script type="text/javascript" src="assets/javascript/javascript.js"></script>
-    
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
