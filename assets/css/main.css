@@ -46,11 +46,23 @@ body {
     width: 90%;
     height: 500px;
     margin: 0 auto;
+   
     
 }
 
+#map-card-title {
+    height: 10%;
+    width: 100%;
+}
+
+#google-maps-box {
+    height: 100%;
+    width: 100%;
+}
+
 #google-maps-display {
-    width: 50%;
+    height: 100%;
+    width: 100%;   
 }
 
 #yelp-display {
@@ -85,6 +97,10 @@ a {
 
 .search {
     display: flex;
+<<<<<<< HEAD
+}
+
+=======
     float: right;
 }
 
@@ -99,3 +115,4 @@ a {
     color: white;
     text-align: center;
 }
+>>>>>>> ad05ea803f67d507548788033f0cc7b575eef60c
