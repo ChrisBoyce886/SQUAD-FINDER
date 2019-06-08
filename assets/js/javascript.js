@@ -1,3 +1,4 @@
+<<<<<<< HEAD:javascript.js
  window.onload = function() {
  /*There are 2 inputs and 1 button on the homepage.  
          
@@ -36,6 +37,50 @@ There are 6 inputs and 2 buttons on the main page that need script.
     var location = $('#location').val();
     var eventDescription = $('#eventDescription').val();
     var teamRoster = $('#roster').val();
+=======
+window.onload = function() {
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+                                    //GOOGLE API SECTION
+//////////////////////////////////////////////////////////////////////////////////////
+ 
+//Geolocation
+var map, infoWindow;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('google-maps-display'), {
+    center: {lat: 35.227, lng: -80.843},
+    zoom: 6
+  });
+  infoWindow = new google.maps.InfoWindow;
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+>>>>>>> 5e4fa6416a2512680228270f05125ba02f3a6fd6:assets/js/javascript.js
 
     console.log(eventCreator);
     console.log(eventName);
@@ -121,7 +166,15 @@ var parkLocations = [
 <<<<<<< HEAD
 
 
+<<<<<<< HEAD:javascript.js
 // }
+=======
+}
+
+
+
+
+>>>>>>> 5e4fa6416a2512680228270f05125ba02f3a6fd6:assets/js/javascript.js
 
 
 

@@ -1,0 +1,157 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Squad</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <!--Upper Section: Add Events & Display Events-->
+    <div id="container">
+        
+        <!--Input Area-->
+        <div id="add-event" class="card card-body shadow p-3 mb-5 bg-white rounded">
+            <a href="../html/homepage.html">
+              <img id="logo" src="assets/images/appLogo.PNG" alt="logo">
+            </a>
+
+            <h4 class="center">Add Event:</h4>
+
+            <form action="#">
+                <label for="squadLeader">Squad Leader:</label>
+                <input type="text" placeholder="Squad Leader" id="squadLeader" class="form-control">
+                <br>
+                <label for="inputEventName">Event Name: </label>
+                <input type="text" placeholder="Event Name" id="inputEventName" class="form-control">
+                <br>
+                <label for="DT">Event Date & Time:</label>
+                <input type="datetime-local" name="DT" id="DT" class="form-control">
+                <br>
+                <select class="form-control">
+                    <option>Choose Location</option>
+                    <option>Bryant Neighborhood Park</option>
+                    <option>Frazier Park</option>
+                    <option>Freedom Park</option>
+                    <option>Kirk Farm Park</option>
+                    <option>Latta Park</option>
+                    <option>Nevin Community Park</option>
+                    <option>Renaissance Park</option>
+                    <option>Southside</option>
+                  </select>
+                <br>
+                <label for="eventDescription">Event Description:</label>
+                <textarea name="eventDescription" id="eventDescription" class="form-control" rows="3" required="required"></textarea>
+                
+                <label for="roster">Upload Team Roster</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="roster" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="roster">Choose file</label>
+                  </div>
+                  
+
+                <button id="addBtn" class="btn btn-success" type="submit">Add Event</button>
+              </form>
+          
+        </div>
+
+        
+        <!--Events Display Container-->
+        <div id="events-display" class="shadow p-3 mb-5 bg-white rounded">
+
+            <!--Search Events Area-->
+            <form class="search" action="/action_page.php">
+              <input id="searchInput" type="text" placeholder="Search Events" name="eventSearch">
+              <button type="submit" id="eventSearch">Search</button>
+            </form>
+        
+
+            <!--Events Dump-->
+            <h4 class="card-title">Events</h4>
+            <div id="events-dump">
+              <!--Dump Events Here-->
+              <div class="no-highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
+
+              <div class="highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
+
+              <div class="no-highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
+
+              <div class="no-highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
+              
+              <div class="no-highlight">
+                  <h4>Sample Event Title</h4>
+                  <p><strong>Squad Leader:</strong></p><span></span>
+                  <p><strong>Date & Time:</strong></p><span></span>
+                  <p><strong>Location:</strong></p><span></span>
+                  <hr>
+              </div>
+
+              
+            </div>    
+    
+        </div>
+
+    </div>
+ 
+    <!--Lower Section: API Display-->
+    <div id="API-display" class="shadow p-3 mb-5 bg-white rounded">
+
+        <h4 class="card-title">Google & Yelp API Display</h4>  
+      
+        <!--Google Maps API-->
+        <div id="google-maps-box">
+        <div id="google-maps-display"></div>
+        <input class="form-control" id="location-SearchBox" type="text" placeholder="Enter Location">
+        </div>
+        <!--Yelp API-->
+        <div id="yelp-display"></div>
+              
+              
+      
+    </div>  
+   
+      
+    <!-- JavaScript -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTwlnvuNPf2SQsdtovRTH6dyTablFaooE&callback=initMap">                                                    
+    </script>
+    <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+
+</html>
