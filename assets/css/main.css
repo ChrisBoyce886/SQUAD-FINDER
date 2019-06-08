@@ -44,7 +44,7 @@ body {
     display: flex;
     text-align: center;
     width: 90%;
-    height: 500px;
+    height: 600px;
     margin: 0 auto;
    
     
@@ -58,11 +58,20 @@ body {
 #google-maps-box {
     height: 100%;
     width: 100%;
+    
 }
 
 #google-maps-display {
     height: 100%;
-    width: 100%;   
+    width: 50%; 
+      
+}
+
+#location-SearchBox {
+    width: 20%;
+    position: relative;
+    left: 10%;
+    top: -50px;
 }
 
 #yelp-display {
