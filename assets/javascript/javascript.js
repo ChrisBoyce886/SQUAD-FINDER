@@ -1,15 +1,91 @@
-window.onload = function () {
-  /*There are 2 inputs and 1 button on the homepage.  
-           
-      Button 1 - #submit     
-          On "click" needs to authenticate user and password. 
+///////////////////////////////////////////////////////////////////////////////////////
+                                    //GOOGLE API SECTION
+//////////////////////////////////////////////////////////////////////////////////////
+//google.maps.event.addDomListener(window, 'load', initMap);
 
-  */
-  //creates a variable to store input from form
-  var user = $('#user').val();
-  var password = $('#password').val();
-  console.log(user);
-  console.log(password);
+//Geolocation
+var parkLocations = [
+  ["Freedom Park, 35.193978, -80.842636"],
+  ["Frazier Park, 35.232251, -80.858032"],
+  ["Frazier Park - Tennis & Basketball, 35.234098, -80.856477"],
+  ["Martin Luther King Park - Tennis & Basketball, 35.243901,-80.871059"],
+  ["Revolution Park, 35.214758, -80.876093"],
+  ["Southside Park, 35.207150, -80.872784"],
+  ["Latta Park, 35.209832,-80.850605"],
+]
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('google-maps-display'), {
+          center: {lat: 35.227085, lng: -80.843124},
+          zoom: 11
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: We could not find your location.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+      var marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        draggable: true
+    });
+
+    var searchBox = new google.maps.places.SearchBox(document.getElementById('location-SearchBox'));
+
+    google.maps.event.addDomListener(searchBox, 'places_changed', function() {
+            var places = searchBox.getPlaces();
+            var bounds = new google.maps.LatLngBounds();
+            var i, place;
+
+            for (i = 0; place = places[i]; i++) {
+                bounds.extend(place.geometry.location);
+                marker.setPosition(place.geometry.location);
+            }
+            map.fitBounds(bounds);
+            map.setZoom(12);
+        })
+///////////////////////////////////////////////////////////////////////////////////////
+                                    //FIREBASE SECTION
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+window.onload = function() {
+ /*There are 2 inputs and 1 button on the homepage.  
+         
+//     Button 1 - #submit     
+//         On "click" needs to authenticate user and password. 
+
+// */
+//creates a variable to store input from form
+     var user = $('#user').val();
+     var password = $('#password').val();
+     console.log(user);
+     console.log(password);
 
 
   /////////////////////////////////////////////////////////////////////////////
@@ -54,54 +130,8 @@ window.onload = function () {
 
 
 
-  ///////////////////////////////////////////////////////////////////////////////////////
-  //GOOGLE API SECTION
-  //////////////////////////////////////////////////////////////////////////////////////
 
-  //Geolocation
-  var map, infoWindow;
-
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('google-maps-display'), {
-      center: {
-        lat: 35.227,
-        lng: -80.843
-      },
-      zoom: 6
-    });
-    infoWindow = new google.maps.InfoWindow;
-
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        infoWindow.open(map);
-        map.setCenter(pos);
-      }, function () {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  }
-
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-  }
-
-
-
+    
 
 
 
@@ -149,6 +179,8 @@ window.onload = function () {
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////
-//FIREBASE SECTION
-//////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
