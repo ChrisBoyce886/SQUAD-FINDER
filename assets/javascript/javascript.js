@@ -1,8 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////
                                     //GOOGLE API SECTION
 //////////////////////////////////////////////////////////////////////////////////////
+//google.maps.event.addDomListener(window, 'load', initMap);
 
-  //Geolocation
+//Geolocation
 var parkLocations = [
   ["Freedom Park, 35.193978, -80.842636"],
   ["Frazier Park, 35.232251, -80.858032"],
@@ -12,10 +13,9 @@ var parkLocations = [
   ["Southside Park, 35.207150, -80.872784"],
   ["Latta Park, 35.209832,-80.850605"],
 ]
-
-     window.initMap = function () {
+      function initMap() {
         map = new google.maps.Map(document.getElementById('google-maps-display'), {
-          center: {lat: 35.227085, lng: -80.843124}, //Charlotte as default map location
+          center: {lat: 35.227085, lng: -80.843124},
           zoom: 11
         });
         infoWindow = new google.maps.InfoWindow;
@@ -29,7 +29,7 @@ var parkLocations = [
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location Found.');
+            infoWindow.setContent('Location found.');
             infoWindow.open(map);
             map.setCenter(pos);
           }, function() {
@@ -44,42 +44,37 @@ var parkLocations = [
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
+                              'Error: We could not find your location.' :
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
 
-      // var userMarker = new google.maps.Marker({
-      //   position: pos,
-      //   animation : google.maps.Animation.DROP,
-      //   map : map,
-      //   draggable: true
-      // })
+      var marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        draggable: true
+    });
 
-      // var searchBox = new google.maps.places.SearchBox(document.getElementById('location-SearchBox'));
+    var searchBox = new google.maps.places.SearchBox(document.getElementById('location-SearchBox'));
 
-      // google.maps.event.addListener(searchBox, 'places_changed', function() {
-      //         var places = searchBox.getPlaces();
-      //         var bounds = new google.maps.LatLngBounds();
-      //         var i, place;
+    google.maps.event.addDomListener(searchBox, 'places_changed', function() {
+            var places = searchBox.getPlaces();
+            var bounds = new google.maps.LatLngBounds();
+            var i, place;
 
-      //         for (i = 0; place = places[i]; i++) {
-      //           console.log(place.geometry.location)
-      //             bounds.extend(place.geometry.location);
-      //             userMarker.setPosition(place.geometry.location);
-      //         }
-      //         map.fitBounds(bounds);
-      //         map.setZoom(15);
-      //     })
-
-
-
+            for (i = 0; place = places[i]; i++) {
+                bounds.extend(place.geometry.location);
+                marker.setPosition(place.geometry.location);
+            }
+            map.fitBounds(bounds);
+            map.setZoom(12);
+        })
 ///////////////////////////////////////////////////////////////////////////////////////
                                     //FIREBASE SECTION
 //////////////////////////////////////////////////////////////////////////////////////
 
 
-      window.onload = function() {
+window.onload = function() {
  /*There are 2 inputs and 1 button on the homepage.  
          
 //     Button 1 - #submit     
@@ -135,8 +130,6 @@ There are 6 inputs and 2 buttons on the main page that need script.
 
 
 
-
-      
 
     
 
