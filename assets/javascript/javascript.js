@@ -185,6 +185,8 @@
 // };
 
 
+
+
   ///////////////////////////////////////////////////////////////////////////////////////
   //YELP API SECTION
   //////////////////////////////////////////////////////////////////////////////////////
@@ -194,6 +196,38 @@
   var userInputAddress = "Freedom Park";
 
   function retrieveBusinessInformation() {
+
+    var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=1&location=" + userInputAddress;
+
+    $.ajax({
+        url: idQueryUrl,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+        }
+      })
+      .then(function ({
+        businesses
+      }) {
+        var businessId = businesses[0].id;
+
+        var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+
+        $.ajax({
+            url: locationDetailsQueryUrl,
+            method: "GET",
+            headers: {
+              Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+            }
+          })
+          .then(function (locationDetails) {
+            console.log (locationDetails);
+            $("#yelp-name").html("Name: " + locationDetails.name);
+            $("#yelp-rating").html("Rating: " + locationDetails.rating);
+            $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+          })
+      })
+  };
 
 
 
