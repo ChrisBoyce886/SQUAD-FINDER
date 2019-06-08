@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,16 +27,25 @@
 
             <form action="#">
                 <label for="squadLeader">Squad Leader:</label>
-                <input type="text" placeholder="Squad Leader" id="squadLeader" class="inputFormat">
+                <input type="text" placeholder="Squad Leader" id="squadLeader" class="form-control">
                 <br>
                 <label for="inputEventName">Event Name: </label>
-                <input type="text" placeholder="Event Name" id="inputEventName" class="inputFormat">
+                <input type="text" placeholder="Event Name" id="inputEventName" class="form-control">
                 <br>
                 <label for="DT">Event Date & Time:</label>
-                <input type="datetime-local" name="DT" id="DT" class="inputFormat">
+                <input type="datetime-local" name="DT" id="DT" class="form-control">
                 <br>
-                <label for="location">Location: </label>
-                <input type="text" placeholder="Location" id="location" class="inputFormat">
+                <select class="form-control">
+                    <option>Choose Location</option>
+                    <option>Bryant Neighborhood Park</option>
+                    <option>Frazier Park</option>
+                    <option>Freedom Park</option>
+                    <option>Kirk Farm Park</option>
+                    <option>Latta Park</option>
+                    <option>Nevin Community Park</option>
+                    <option>Renaissance Park</option>
+                    <option>Southside</option>
+                  </select>
                 <br>
                 <label for="eventDescription">Event Description:</label>
                 <textarea name="eventDescription" id="eventDescription" class="form-control" rows="3" required="required"></textarea>
@@ -115,21 +125,17 @@
     </div>
  
     <!--Lower Section: API Display-->
-    <div id="API-display" class="shadow p-3 mb-5 bg-white rounded">
+    <div id="API-display" class="card shadow p-3 mb-5 bg-white rounded">
 
-        <h4 class="card-title">Google & Yelp API Display</h4>  
+          
       
         <!--Google Maps API-->
         <div id="google-maps-box">
-        <div id="google-maps-display"></div>
-        <input class="form-control" id="location-SearchBox" type="text" placeholder="Enter Location">
+          <div id="google-maps-display"></div>
+          <input class="form-control" id="location-SearchBox" type="text" placeholder="Enter Location">
         </div>
         <!--Yelp API-->
-        <div>
-        <p id="yelp-name"></p>
-        <p id="yelp-rating"></p>
-        <p id="yelp-phone-number"></p>
-        </div>
+        <div id="yelp-display"></div>
               
               
       
@@ -147,4 +153,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+
 </html>
