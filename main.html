@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-      <!-- FireBase src link-->
-      <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -27,16 +27,25 @@
 
             <form action="#">
                 <label for="squadLeader">Squad Leader:</label>
-                <input type="text" placeholder="Squad Leader" id="squadLeader" class="inputFormat">
+                <input type="text" placeholder="Squad Leader" id="squadLeader" class="form-control">
                 <br>
                 <label for="inputEventName">Event Name: </label>
-                <input type="text" placeholder="Event Name" id="inputEventName" class="inputFormat">
+                <input type="text" placeholder="Event Name" id="inputEventName" class="form-control">
                 <br>
                 <label for="DT">Event Date & Time:</label>
-                <input type="datetime-local" name="DT" id="DT" class="inputFormat">
+                <input type="datetime-local" name="DT" id="DT" class="form-control">
                 <br>
-                <label for="location">Location: </label>
-                <input type="text" placeholder="Location" id="location" class="inputFormat">
+                <select class="form-control">
+                    <option>Choose Location</option>
+                    <option>Bryant Neighborhood Park</option>
+                    <option>Frazier Park</option>
+                    <option>Freedom Park</option>
+                    <option>Kirk Farm Park</option>
+                    <option>Latta Park</option>
+                    <option>Nevin Community Park</option>
+                    <option>Renaissance Park</option>
+                    <option>Southside</option>
+                  </select>
                 <br>
                 <label for="eventDescription">Event Description:</label>
                 <textarea name="eventDescription" id="eventDescription" class="form-control" rows="3" required="required"></textarea>
@@ -68,7 +77,7 @@
             <h4 class="card-title">Events</h4>
             <div id="events-dump">
               <!--Dump Events Here-->
-              <div class="no-highlight" id = "event1">
+              <div class="no-highlight">
                   <h4>Sample Event Title</h4>
                   <p><strong>Squad Leader:</strong></p><span></span>
                   <p><strong>Date & Time:</strong></p><span></span>
@@ -76,7 +85,7 @@
                   <hr>
               </div>
 
-              <div class="highlight" id = "event2">
+              <div class="highlight">
                   <h4>Sample Event Title</h4>
                   <p><strong>Squad Leader:</strong></p><span></span>
                   <p><strong>Date & Time:</strong></p><span></span>
@@ -84,7 +93,7 @@
                   <hr>
               </div>
 
-              <div class="no-highlight" id = "event3">
+              <div class="no-highlight">
                   <h4>Sample Event Title</h4>
                   <p><strong>Squad Leader:</strong></p><span></span>
                   <p><strong>Date & Time:</strong></p><span></span>
@@ -92,7 +101,7 @@
                   <hr>
               </div>
 
-              <div class="no-highlight" id="event4">
+              <div class="no-highlight">
                   <h4>Sample Event Title</h4>
                   <p><strong>Squad Leader:</strong></p><span></span>
                   <p><strong>Date & Time:</strong></p><span></span>
@@ -100,7 +109,7 @@
                   <hr>
               </div>
               
-              <div class="no-highlight" id="event5">
+              <div class="no-highlight">
                   <h4>Sample Event Title</h4>
                   <p><strong>Squad Leader:</strong></p><span></span>
                   <p><strong>Date & Time:</strong></p><span></span>
@@ -144,4 +153,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+
 </html>
