@@ -125,16 +125,6 @@ window.onload = function() {
   console.log(search);
 
 
-
-
-
-
-
-
-    
-
-
-
   ///////////////////////////////////////////////////////////////////////////////////////
   //YELP API SECTION
   //////////////////////////////////////////////////////////////////////////////////////
@@ -170,12 +160,16 @@ window.onload = function() {
           })
           .then(function (locationDetails) {
             console.log (locationDetails);
-            $("#yelp-display").html("Name: " + locationDetails.name);
-            $("#yelp-display").html($("#yelp-display").html() + "Rating: " + locationDetails.rating);
+            $("#yelp-name").html("Name: " + locationDetails.name);
+            $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+            $("#yelp-rating").html("Rating: " + locationDetails.rating);
+
           })
       })
   };
 };
+
+
 
 
 
