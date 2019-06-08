@@ -27,16 +27,25 @@
 
             <form action="#">
                 <label for="squadLeader">Squad Leader:</label>
-                <input type="text" placeholder="Squad Leader" id="squadLeader" class="inputFormat">
+                <input type="text" placeholder="Squad Leader" id="squadLeader" class="form-control">
                 <br>
                 <label for="inputEventName">Event Name: </label>
-                <input type="text" placeholder="Event Name" id="inputEventName" class="inputFormat">
+                <input type="text" placeholder="Event Name" id="inputEventName" class="form-control">
                 <br>
                 <label for="DT">Event Date & Time:</label>
-                <input type="datetime-local" name="DT" id="DT" class="inputFormat">
+                <input type="datetime-local" name="DT" id="DT" class="form-control">
                 <br>
-                <label for="location">Location: </label>
-                <input type="text" placeholder="Location" id="location" class="inputFormat">
+                <select class="form-control">
+                    <option>Choose Location</option>
+                    <option>Bryant Neighborhood Park</option>
+                    <option>Frazier Park</option>
+                    <option>Freedom Park</option>
+                    <option>Kirk Farm Park</option>
+                    <option>Latta Park</option>
+                    <option>Nevin Community Park</option>
+                    <option>Renaissance Park</option>
+                    <option>Southside</option>
+                  </select>
                 <br>
                 <label for="eventDescription">Event Description:</label>
                 <textarea name="eventDescription" id="eventDescription" class="form-control" rows="3" required="required"></textarea>
