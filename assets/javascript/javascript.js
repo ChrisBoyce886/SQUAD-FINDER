@@ -266,41 +266,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 // }
 
 
-
-    
-
-
-
-// ///////////////////////////////////////////////////////////////////////////////////////
-//                                     //YELP API SECTION
-// //////////////////////////////////////////////////////////////////////////////////////
-
-//   var userInputAddress = "New York City";
-
-//   function displayLocationDetails() {
-
-//     var queryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInputAddress;   
-
-//     $.ajax({
-//       url: queryUrl, 
-//       method: "GET", 
-//       headers: {
-//        Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
-//       }
-//     })
-//     .then(function(response) {
-//       var businessId = response.data;
-//     });
-//   };
-// };
-
-
-
-
   ///////////////////////////////////////////////////////////////////////////////////////
   //YELP API SECTION
   //////////////////////////////////////////////////////////////////////////////////////
-
+window.onload = function(){
   retrieveBusinessInformation();
 
   var userInputAddress = "Freedom Park";
@@ -338,7 +307,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
           })
       })
   };
-
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
