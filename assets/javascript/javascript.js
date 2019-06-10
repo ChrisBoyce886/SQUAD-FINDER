@@ -375,7 +375,6 @@ $(document).on("click", "#eventSearch", function () {
     messagingSenderId: "8693009592",
     appId: "1:8693009592:web:3ffc100f48ce733c"
   };
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   let database = firebase.database();
 // window.onload = function(){
