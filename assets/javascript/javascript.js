@@ -1,3 +1,5 @@
+window.onload = function(){
+
 // ///////////////////////////////////////////////////////////////////////////////////////
 //                                     //GOOGLE API SECTION
 // //////////////////////////////////////////////////////////////////////////////////////
@@ -363,6 +365,18 @@ $(document).on("click", "#eventSearch", function () {
 ///////////////////////////////////////////////////////////////////////////////////////
                                     //FIREBASE SECTION
 //////////////////////////////////////////////////////////////////////////////////////
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyCut4P2yrq2ECQWaX5liAQ6luwvuUQVozA",
+    authDomain: "project-1-14697.firebaseapp.com",
+    databaseURL: "https://project-1-14697.firebaseio.com",
+    projectId: "project-1-14697",
+    storageBucket: "project-1-14697.appspot.com",
+    messagingSenderId: "8693009592",
+    appId: "1:8693009592:web:3ffc100f48ce733c"
+  };
+  firebase.initializeApp(firebaseConfig);
+  let database = firebase.database();
 // window.onload = function(){
 
 //   var firebaseConfig = {
@@ -524,27 +538,148 @@ $(document).on("click", "#eventSearch", function () {
 
 // })
 
+console.log("connected")
 
 
 
-// firebase.auth().onAuthStateChanged(user => {
+  document.getElementById("addBtn").addEventListener("click", e => {
 
-//   if(user) {
-// console.log("you're logged in!")     
-// }
-     
-// });
+    event.preventDefault()
+         Date.prototype.toDatetimeLocal = 
+function toDatetimeLocal() {
+  var 
+    date = this,
+    ten = function (i) {
+        return (i < 10 ? '0' : '') + i;
+    };
+    YYYY = date.getFullYear(),
+    MM = ten(date.getMonth() + 1),
+    DD = ten(date.getDate()),
+    HH = ten(date.getHours()),
+    II = ten(date.getMinutes()),
+    SS = ten(date.getSeconds())
+    ;
+    return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
+}
 
-
-// $(document).on("click", ".eventButton", function () {
-
+  //     usersRef = firebase.database().ref('users')
+  // usersRef.orderBy("uid").startAt(uid).endAt(uid).on("value", function(snapshot) {
+  //   var user = snapshot.val();
+  //   console.log(user)
+  // });
   
-//   let parkLocation = document.getElementById("eventLocation")
-  
-//   console.log($(this).children().first().text());
-// })
+      
+    
+          // if(user)
+          //     console.log(db.collection("users").doc(user.uid))
+          // else
+          //     alert('user not logged in')
+    
+       let DT = document.getElementById("DT")
+       let leaderName = document.querySelector("#squadLeader")
+       leaderName = leaderName.value
+       let eventDescription = document.querySelector("#eventDescription")
+       eventDescription = eventDescription.value
+       let eventLocation = document.querySelector("#location")
+       eventLocation = eventLocation.value
+       let eventName = document.querySelector("#inputEventName")
+       eventName = eventName.value
+       let eventRef = firebase.database().ref("events")
+       let newEventRef = eventRef.push();
+       let ISOString = new Date(DT.value).toISOString();
+       let finalTime = DT.value = new Date(ISOString).toDatetimeLocal();
+      //  let name = user.displayName
+       console.log(finalTime)
+       console.log(name)
+    
+     console.log(eventDescription)
+    
+    
+           newEventRef.set({
+          
+         leader: leaderName,
+         name: eventName,
+         eventDate: finalTime,
+         location: eventLocation,
+         description: eventDescription,
+         })
+    
+    
+       });
+    
+    // var eventRef = ref.child(key)
+     let eventRef = firebase.database().ref("events")
+     eventRef.on('child_added', function(childSnapshot){
+       console.log(childSnapshot.val())
+    
+       var event = childSnapshot.val(); 
+     console.log(event.leader)
+       let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key)
+       let eventTitle = $("<p>").text(childSnapshot.val().name)
+       let eventLeader = $("<p>").text(childSnapshot.val().leader)
+       let eventDate = $("<p>").text(childSnapshot.val().eventDate)
+       let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
+    
+       $(eventButton).append(eventLocation)
+       $(eventButton).append(eventDate)
+       $(eventButton).append(eventLeader)
+       $(eventButton).append(eventTitle)
+    
+       let contentDiv = $("<div>").addClass("content");
+        $(eventButton).append(contentDiv)
+       $("#events-dump").prepend(eventButton)
+    
+       var elm = document.createElement('p')
+       elm.id = 'event-'+childSnapshot.key;
+       elm.innerText = event.leader;
+       let contentDivSelector = document.querySelector('.content')
+       contentDivSelector.appendChild(elm);
+    
+       let eventName = document.createElement("p")
+       eventName.id = "eventNameInButton"
+       eventName.innerText = event.name
+       $(elm).append(eventName)
+    
+       var coll = document.getElementsByClassName(childSnapshot.key);
+    
+       for (i = 0; i < coll.length; i++) {
+         coll[i].addEventListener("click", function() {
+           this.classList.toggle("active");
+           var content = elm;
+           console.log(content)
+            if (content.style.display === "block") {
+             content.style.display = "none";
+            } else {
+             content.style.display = "block";
+            }
+         });
+       }
+     })
+    
+     firebase.auth().onAuthStateChanged(user => {
+    
+       if(user) {
+     console.log("you're logged in!")     
+     }
+         
+     });
+    
+     $(document).on("click", ".eventButton", function parkLocation () {
+    
+       let parkLocation = document.getElementById("eventLocation")
+      
+       console.log($(this).children().first().text());
 
-// }
-
+       return $(this).children().first().text();
+    
+     })
+    
+    
+     document.getElementById('get_file').onclick = function() {
+       document.getElementById('my_file').click();
+     };
+    
+     }
+    
 
 
