@@ -1,4 +1,4 @@
-
+window.onload = function(){
 
 // ///////////////////////////////////////////////////////////////////////////////////////
 //                                     //GOOGLE API SECTION
@@ -344,7 +344,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 ///////////////////////////////////////////////////////////////////////////////////////
                                     //FIREBASE SECTION
 //////////////////////////////////////////////////////////////////////////////////////
-window.onload = function(){
 
   var firebaseConfig = {
     apiKey: "AIzaSyCut4P2yrq2ECQWaX5liAQ6luwvuUQVozA",
@@ -358,174 +357,149 @@ window.onload = function(){
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   let database = firebase.database();
+
 console.log("connected")
 
- $("#create").click(function(event) {
-
-  event.preventDefault()
 
 
-  // let users = firebase.database().child('users/')
-console.log("hey")
+  document.getElementById("addBtn").addEventListener("click", e => {
 
-    let email = document.querySelector("#createUser")
-    let username = document.querySelector("#userName")
-    let password = document.querySelector("#createPassword")
-    
-
-
-firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
-    .then(function(user) {
-        displayName = username.value // change this back to username.value
-        writeUserData(displayName, user) // possibly only need to pass displayName as parameter
-    })
-
-
-})
-
-//Firebase UI signin 
-
-$("#submit").click(function(event) {
-  event.preventDefault();
-  
-  console.log("button clicked")
-   let email = document.querySelector("#user")
-    let password = document.querySelector("#password")
-  
-  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-  
-    firebase.auth().onAuthStateChanged(user => {
-
-    if(user) {
-      window.location = 'main.html'; //After successful login, user will be redirected to main.html
-        }
-       
-});
-  
-  })
-
-
-function writeUserData(displayName, user) { //possibly only need to pass in displayName here
-    console.log("we're in")
-    firebase.database().ref('users/' + user.uid).set({
-        username: displayName,
-})
-
-
-
-$("#exampleInputEmail1").val("");
-$("#exampleUserName").val("");
-$("#exampleInputPassword1").val("");
+    event.preventDefault()
+         Date.prototype.toDatetimeLocal = 
+function toDatetimeLocal() {
+  var 
+    date = this,
+    ten = function (i) {
+        return (i < 10 ? '0' : '') + i;
+    };
+    YYYY = date.getFullYear(),
+    MM = ten(date.getMonth() + 1),
+    DD = ten(date.getDate()),
+    HH = ten(date.getHours()),
+    II = ten(date.getMinutes()),
+    SS = ten(date.getSeconds())
+    ;
+    return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
 }
 
-
-
-// MainPage Add Event:
-
-//converting Event Date and Time
- Date.prototype.toDatetimeLocal = 
-    function toDatetimeLocal() {
-      var 
-        date = this,
-        ten = function (i) {
-            return (i < 10 ? '0' : '') + i;
-        };
-        YYYY = date.getFullYear(),
-        MM = ten(date.getMonth() + 1),
-        DD = ten(date.getDate()),
-        HH = ten(date.getHours()),
-        II = ten(date.getMinutes()),
-        SS = ten(date.getSeconds())
-        ;
-        return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
-    }
-
-document.getElementById("addBtn").addEventListener("click", e => {
-
-    let user = firebase.auth().currentUser;  
-    console.log(user)  
-
-    // if(user)
-    //     console.log(db.collection("users").doc(user.uid))
-    // else
-    //     alert('user not logged in')
-
-  let DT = document.getElementById("DT")
-  let leaderName = document.querySelector("#squadLeader")
-  leaderName = leaderName.value
-  let eventDescription = document.querySelector("#eventDescription")
-  eventDescription = eventDescription.value
-  let eventLocation = document.querySelector("#location")
-  eventLocation = eventLocation.value
-  let eventName = document.querySelector("#inputEventName")
-  eventName = eventName.value
-  let eventRef = firebase.database().ref("events")
-  let newEventRef = eventRef.push();
-  let ISOString = new Date(DT.value).toISOString();
-  let finalTime = DT.value = new Date(ISOString).toDatetimeLocal();
-  let name = user.displayName
-  console.log(finalTime)
-  console.log(name)
-
-console.log(eventDescription)
-
-
-      newEventRef.set({
+  //     usersRef = firebase.database().ref('users')
+  // usersRef.orderBy("uid").startAt(uid).endAt(uid).on("value", function(snapshot) {
+  //   var user = snapshot.val();
+  //   console.log(user)
+  // });
+  
       
-    leader: leaderName,
-    name: eventName,
-    eventDate: finalTime,
-    location: eventLocation,
-    description: eventDescription,
-    })
+    
+          // if(user)
+          //     console.log(db.collection("users").doc(user.uid))
+          // else
+          //     alert('user not logged in')
+    
+       let DT = document.getElementById("DT")
+       let leaderName = document.querySelector("#squadLeader")
+       leaderName = leaderName.value
+       let eventDescription = document.querySelector("#eventDescription")
+       eventDescription = eventDescription.value
+       let eventLocation = document.querySelector("#location")
+       eventLocation = eventLocation.value
+       let eventName = document.querySelector("#inputEventName")
+       eventName = eventName.value
+       let eventRef = firebase.database().ref("events")
+       let newEventRef = eventRef.push();
+       let ISOString = new Date(DT.value).toISOString();
+       let finalTime = DT.value = new Date(ISOString).toDatetimeLocal();
+      //  let name = user.displayName
+       console.log(finalTime)
+       console.log(name)
+    
+     console.log(eventDescription)
+    
+    
+           newEventRef.set({
+          
+         leader: leaderName,
+         name: eventName,
+         eventDate: finalTime,
+         location: eventLocation,
+         description: eventDescription,
+         })
+    
+    
+       });
+    
+    // var eventRef = ref.child(key)
+     let eventRef = firebase.database().ref("events")
+     eventRef.on('child_added', function(childSnapshot){
+       console.log(childSnapshot.val())
+    
+       var event = childSnapshot.val(); 
+     console.log(event.leader)
+       let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key)
+       let eventTitle = $("<p>").text(childSnapshot.val().name)
+       let eventLeader = $("<p>").text(childSnapshot.val().leader)
+       let eventDate = $("<p>").text(childSnapshot.val().eventDate)
+       let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
+    
+       $(eventButton).append(eventLocation)
+       $(eventButton).append(eventDate)
+       $(eventButton).append(eventLeader)
+       $(eventButton).append(eventTitle)
+    
+       let contentDiv = $("<div>").addClass("content");
+        $(eventButton).append(contentDiv)
+       $("#events-dump").prepend(eventButton)
+    
+       var elm = document.createElement('p')
+       elm.id = 'event-'+childSnapshot.key;
+       elm.innerText = event.leader;
+       let contentDivSelector = document.querySelector('.content')
+       contentDivSelector.appendChild(elm);
+    
+       let eventName = document.createElement("p")
+       eventName.id = "eventNameInButton"
+       eventName.innerText = event.name
+       $(elm).append(eventName)
+    
+       var coll = document.getElementsByClassName(childSnapshot.key);
+    
+       for (i = 0; i < coll.length; i++) {
+         coll[i].addEventListener("click", function() {
+           this.classList.toggle("active");
+           var content = elm;
+           console.log(content)
+            if (content.style.display === "block") {
+             content.style.display = "none";
+            } else {
+             content.style.display = "block";
+            }
+         });
+       }
+     })
+    
+     firebase.auth().onAuthStateChanged(user => {
+    
+       if(user) {
+     console.log("you're logged in!")     
+     }
+         
+     });
+    
+     $(document).on("click", ".eventButton", function parkLocation () {
+    
+       let parkLocation = document.getElementById("eventLocation")
+      
+       console.log($(this).children().first().text());
 
-});
-
-// var eventRef = ref.child(key)
-let eventRef = firebase.database().ref("events")
-eventRef.on('child_added', function(childSnapshot){
-
-  
-  let eventButton = $("<button>").addClass("eventButton")
-  let eventTitle = $("<p>").text(childSnapshot.val().name)
-  let eventLeader = $("<p>").text(childSnapshot.val().leader)
-  let eventDate = $("<p>").text(childSnapshot.val().eventDate)
-  let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
-
-  $(eventButton).append(eventLocation)
-  $(eventButton).append(eventDate)
-  $(eventButton).append(eventLeader)
-  $(eventButton).append(eventTitle)
-
-  $("#event1").prepend(eventButton)
-
-
-
-
-
-})
-
-
-
-
-firebase.auth().onAuthStateChanged(user => {
-
-  if(user) {
-console.log("you're logged in!")     
-}
-     
-});
-
-
-$(document).on("click", ".eventButton", function () {
-
-  
-  let parkLocation = document.getElementById("eventLocation")
-  
-  console.log($(this).children().first().text());
-})
-
-}
-
+       return $(this).children().first().text();
+    
+     })
+    
+    
+     document.getElementById('get_file').onclick = function() {
+       document.getElementById('my_file').click();
+     };
+    
+     }
+    
 
 

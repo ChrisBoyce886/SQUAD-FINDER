@@ -1,209 +1,162 @@
-<<<<<<< HEAD:javascript.js
- window.onload = function() {
- /*There are 2 inputs and 1 button on the homepage.  
-         
-//     Button 1 - #submit     
-//         On "click" needs to authenticate user and password. 
+window.onload = function(){
 
-// */
-//creates a variable to store input from form
-     var user = $('#user').val();
-     var password = $('#password').val();
-     console.log(user);
-     console.log(password);
+  var firebaseConfig = {
+    apiKey: "AIzaSyCut4P2yrq2ECQWaX5liAQ6luwvuUQVozA",
+    authDomain: "project-1-14697.firebaseapp.com",
+    databaseURL: "https://project-1-14697.firebaseio.com",
+    projectId: "project-1-14697",
+    storageBucket: "project-1-14697.appspot.com",
+    messagingSenderId: "8693009592",
+    appId: "1:8693009592:web:3ffc100f48ce733c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  let database = firebase.database();
 
+ $("#create").click(function(event) {
 
-/////////////////////////////////////////////////////////////////////////////
-/* 
-There are 6 inputs and 2 buttons on the main page that need script. 
-
-    Button 1 :  #addBtn
-        On "click" needs to --> 
-            1)Retrieve input from form and list the event in the event display area.
-            2)Connect to both API's 
+  event.preventDefault()
 
 
-    Button 2 : #eventSearch
-        On "click" needs to -->
-            1) Match the input from #searchInput with an event in the events list. 
-            2) Highlight the searched events in the display area. 
+  // let users = firebase.database().child('users/')
+console.log("hey")
 
-*/
-
-//creates a variable to store input from form for button 1.
-    var eventCreator = $('#squadLeader').val();
-    var eventName = $('#inputEventName').val();
-    var dateTime = $('#DT').val();
-    var location = $('#location').val();
-    var eventDescription = $('#eventDescription').val();
-    var teamRoster = $('#roster').val();
-=======
-window.onload = function() {
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-                                    //GOOGLE API SECTION
-//////////////////////////////////////////////////////////////////////////////////////
- 
-//Geolocation
-var map, infoWindow;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('google-maps-display'), {
-    center: {lat: 35.227, lng: -80.843},
-    zoom: 6
-  });
-  infoWindow = new google.maps.InfoWindow;
-
-  // Try HTML5 geolocation.
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
-      map.setCenter(pos);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-}
->>>>>>> 5e4fa6416a2512680228270f05125ba02f3a6fd6:assets/js/javascript.js
-
-    console.log(eventCreator);
-    console.log(eventName);
-    console.log(dateTime);
-    console.log(location);
-    console.log(eventDescription);
-    console.log(teamRoster)
-
-    //creates a variable to store input from form for button 2.
-    var search = $('#searchInput').val();
-    console.log(search);
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-                                    //GOOGLE API SECTION
-//////////////////////////////////////////////////////////////////////////////////////
- 
-//Geolocation
-var parkLocations = [
-  ["Freedom Park, 35.193978, -80.842636"],
-  ["Frazier Park, 35.232251, -80.858032"],
-  ["Frazier Park - Tennis & Basketball, 35.234098, -80.856477"],
-  ["Martin Luther King Park - Tennis & Basketball, 35.243901,-80.871059"],
-  ["Revolution Park, 35.214758, -80.876093"],
-  ["Southside Park, 35.207150, -80.872784"],
-  ["Latta Park, 35.209832,-80.850605"],
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('google-maps-display'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 11
-        });
-        infoWindow = new google.maps.InfoWindow;
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-      
-
+    let email = document.querySelector("#createUser")
+    let username = document.querySelector("#userName")
+    let password = document.querySelector("#createPassword")
     
 
+firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+    .then(function(user) {
+        displayName = username.value // change this back to username.value
+        writeUserData(displayName, user) // possibly only need to pass displayName as parameter
+    })
+
+    if(user) {
+      window.location = 'main.html'; //After successful login, user will be redirected to main.html
+        }
+
+    
+  })
 
 
-///////////////////////////////////////////////////////////////////////////////////////
-                                    //YELP API SECTION
-//////////////////////////////////////////////////////////////////////////////////////
+//Firebase UI signin 
 
-  var userInputAddress = "New York City";
+$("#submit").click(function(event) {
+  event.preventDefault();
+  
+  console.log("button clicked")
+  let email = document.querySelector("#user")
+  let password = document.querySelector("#password")
+  
+  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+  
+  firebase.auth().onAuthStateChanged(user => {
 
-  function displayLocationDetails() {
+    if(user) {
+      window.location = 'main.html'; //After successful login, user will be redirected to main.html
+        }
+       
+});
+  
+  })
 
-    var queryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInputAddress;   
+  // uploading profile picture to firebase 
+  // var fileButton = document.getElementById('profilePicture');
 
-<<<<<<< HEAD
+  // fileButton.addEventListener('change', function(e){
 
+  //   let file = e.target.files[0]
 
-<<<<<<< HEAD:javascript.js
-// }
-=======
+  //   let storageRef = firebase.database().ref(user + '/profilePicture/' + file.name)
+
+  //   let task = storageRef.put(file);
+
+  //   let user = firebase.auth().currentUser;
+
+  //   task.on('state_changed',
+
+  //   function progress(snapshot){
+  //     let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
+  //     uploader.value = percentage;
+  //   })
+  // })
+
+  var readURL = function(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+        let file = e.target.files[0]
+
+        let storageRef = firebase.database().ref(user + '/profilePicture/' + file.name)
+        
+        let task = storageRef.put(file);
+        
+        let user = firebase.auth().currentUser;
+        
+        task.on('state_changed',
+          function progress(snapshot){
+       let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
+       uploader.value = percentage;
+     })
+            $('.profile-pic').attr('src', e.target.result);
+  
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
 }
 
 
+$(".profile-pic").on('change', function(){
+    readURL(this);
+});
+
+$(".upload-button").on('click', function() {
+   $(".profile-pic").click();
+});
 
 
->>>>>>> 5e4fa6416a2512680228270f05125ba02f3a6fd6:assets/js/javascript.js
-
-
-
-
-
-
-=======
-    $.ajax({
-      url: queryUrl, 
-      method: "GET", 
-      headers: {
-       Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
-      }
-    })
-    .then(function(response) {
-      var businessId = response.data;
-    });
-  };
-};
->>>>>>> 6726e1d3586d8791dbc9c69f2308a9f7bbc65af4
+$(".dropbtn").click(function(event) {
+  document.getElementById("myDropdown").classList.toggle("show");
+})
 
 
 
 
+function writeUserData(displayName, user) { //possibly only need to pass in displayName here
+    console.log("we're in")
+    firebase.database().ref('users/' + user.uid).set({
+        displayName: displayName,
+})
+
+$("#exampleInputEmail1").val("");
+$("#exampleUserName").val("");
+$("#exampleInputPassword1").val("");
+}
+
+// MainPage Add Event:
+
+//converting Event Date and Time
+ Date.prototype.toDatetimeLocal = 
+    function toDatetimeLocal() {
+      var 
+        date = this,
+        ten = function (i) {
+            return (i < 10 ? '0' : '') + i;
+        };
+        YYYY = date.getFullYear(),
+        MM = ten(date.getMonth() + 1),
+        DD = ten(date.getDate()),
+        HH = ten(date.getHours()),
+        II = ten(date.getMinutes()),
+        SS = ten(date.getSeconds())
+        ;
+        return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
+    }
+
+ }
 
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-                                    //FIREBASE SECTION
-//////////////////////////////////////////////////////////////////////////////////////
 
