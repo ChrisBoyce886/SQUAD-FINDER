@@ -74,8 +74,8 @@ body {
     top: -50px;
 }
 
-#yelp-display {  
-  width: 50%;
+#yelp-display {
+    width: 50%;
 }
 
 #logo {
@@ -119,7 +119,7 @@ a {
 }
 
 .collapsible {
-    background-color: rgba(119, 119, 119, 0.5);
+    background-color: #777;
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -128,8 +128,6 @@ a {
     text-align: center;
     outline: none;
     font-size: 15px;
-    border-radius: 20px;
-    margin: 5px;
   }
 
   .active, .collapsible:hover {
@@ -248,4 +246,7 @@ img {
   color: #999;
 }
 
-    
+#yelp-photos {
+  height: 300px;
+  width: 300px;
+}
