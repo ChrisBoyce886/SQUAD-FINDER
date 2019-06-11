@@ -170,9 +170,10 @@ geolocation()
 
 }
 
-//$(document).on("click", "#eventSearch", function () {
-  //    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-    //return false;
+// $(document).on("click", "#eventSearch", function () {
+//   $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+//     return false;
+// })
 
 // var eventmarker =    {
 //     position: parkLocations[i],
@@ -292,6 +293,7 @@ window.onload = function(){
 //YELP API SECTION
 //////////////////////////////////////////////////////////////////////////////////////
 
+window.onload = function(){
   $(document).on("click", ".eventButton", function () {
 
     // needs to target the user input with this one
@@ -804,7 +806,16 @@ function toDatetimeLocal() {
        let eventTitle = $("<p>").text(childSnapshot.val().name)
        let eventLeader = $("<p>").text(childSnapshot.val().leader)
        let eventDate = $("<p>").text(childSnapshot.val().eventDate)
-       let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
+       let eventLocation = $("<a href=''>").attr("id", "eventLocation").text(childSnapshot.val().location)
+
+       $("#eventLocation").click(function(event){
+          event.preventDefault();
+          $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+          var userInput = $(this).children().first().text();
+          console.log(userInput)     
+          moveMap()                 
+       });
+       
     
        $(eventButton).append(eventLocation)
        $(eventButton).append(eventDate)
@@ -850,8 +861,54 @@ function toDatetimeLocal() {
          
      });
     
-     $(document).on("click", ".eventButton", function parkLocation () {
-    
+     $(document).on("click", ".eventButton", function parksLocation () {
+       
+      var userInput = $(this).children().first().text();
+        console.log(userInput)
+     
+      function moveMap(){   
+
+        for (i = 0; i < parkLocations.length; i++){
+          
+          parkLocationMatch = parkLocations[i] 
+            console.log(parkLocationMatch)
+
+        if (userInput == parkLocationMatch.name){
+          
+        mapCenter = parkLocationMatch;
+          console.log(parkLocationMatch)
+       
+        map = new google.maps.Map(document.getElementById('google-maps-display'),{
+          center: mapCenter,
+          zoom: 18,
+          icon: "assets/images/urbanpark.png",
+          title: parkLocationMatch.name,
+          optimized: false,
+          animation: google.maps.Animation.DROP,
+        });
+
+        for (i = 0; i < parkLocations.length; i++){
+
+          mapmarkerFinal = parkLocations[i];   
+
+          var marker = new google.maps.Marker({   
+            position: mapmarkerFinal,
+            map: map,
+            icon: "assets/images/urbanpark.png",
+            title: mapmarkerFinal.name,
+            optimized: false,
+            draggable: false,
+            animation: google.maps.Animation.DROP,        
+         });  
+        }
+      }
+        else {
+          console.log("fail")          
+        }
+      }
+    }
+    moveMap();
+
        let parkLocation = document.getElementById("eventLocation")
       
        console.log($(this).children().first().text());
@@ -864,4 +921,6 @@ function toDatetimeLocal() {
      document.getElementById('get_file').onclick = function() {
        document.getElementById('my_file').click();
      };
+
+}
 }
