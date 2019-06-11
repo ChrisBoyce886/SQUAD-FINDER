@@ -256,3 +256,7 @@ img {
     font-size: 24px;
     font-weight: 5px;
   }
+#yelp-photos {
+  height: 300px;
+  width: 300px;
+}

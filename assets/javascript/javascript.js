@@ -169,9 +169,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 }
 
-$(document).on("click", "#eventSearch", function () {
-      $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-    return false;
+//$(document).on("click", "#eventSearch", function () {
+  //    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    //return false;
 
 // var eventmarker =    {
 //     position: parkLocation[i],
@@ -194,7 +194,7 @@ $(document).on("click", "#eventSearch", function () {
 //   }
 // }
 //  console.log($(this).children().first().text());
- });
+ //});
 
  
  
@@ -287,79 +287,370 @@ $(document).on("click", "#eventSearch", function () {
 // }
 
 
+///////////////////////////////////////////////////////////////////////////////////////
+//YELP API SECTION
+//////////////////////////////////////////////////////////////////////////////////////
 
-    
+  $(document).on("click", ".eventButton", function () {
 
+    // needs to target the user input with this one
+    var userInput = $(this).children().first().text();
 
+    if (userInput === "Freedom Park") {
 
-// ///////////////////////////////////////////////////////////////////////////////////////
-//                                     //YELP API SECTION
-// //////////////////////////////////////////////////////////////////////////////////////
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Charlotte NC Parks";
 
-//   var userInputAddress = "New York City";
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
 
-//   function displayLocationDetails() {
+          var businessId = businesses[0].id;
 
-//     var queryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInputAddress;   
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
 
-//     $.ajax({
-//       url: queryUrl, 
-//       method: "GET", 
-//       headers: {
-//        Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
-//       }
-//     })
-//     .then(function(response) {
-//       var businessId = response.data;
-//     });
-//   };
-// };
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
 
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
 
+        })
+    } else if (userInput === "Frazier Park") {
 
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Charlotte NC Parks";
 
-  ///////////////////////////////////////////////////////////////////////////////////////
-  //YELP API SECTION
-  //////////////////////////////////////////////////////////////////////////////////////
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
 
-  retrieveBusinessInformation();
+          var businessId = businesses[12].id;
 
-  var userInputAddress = "Freedom Park";
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
 
-  function retrieveBusinessInformation() {
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
 
-    var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=1&location=" + userInputAddress;
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
 
-    $.ajax({
-        url: idQueryUrl,
-        method: "GET",
-        headers: {
-          Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
-        }
-      })
-      .then(function ({
-        businesses
-      }) {
-        var businessId = businesses[0].id;
+        })
+    } else if (userInput === "Revolution Park") {
 
-        var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Charlotte NC Parks";
 
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
+
+          var businessId = businesses[21].id;
+
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
+
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
+
+        })
+    } else if (userInput === "Bryant Neighborhood Park") {
+
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Charlotte NC Parks";
+
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
+
+          var businessId = businesses[40].id;
+
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
+
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
+
+        })
+    } else if (userInput === "Renaissance Park") {
+
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Charlotte NC Parks";
+
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
+
+          var businessId = businesses[25].id;
+
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
+
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
+
+        })
+    } else if (userInput === "Southside Park") {
+
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Charlotte NC Parks";
+
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
+
+          var businessId = businesses[32].id;
+
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
+
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
+
+        })
+    } else if (userInput === "Nevin Community Park") {
+
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Nevin Park";
+
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
+
+          var businessId = businesses[10].id;
+
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
+
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
+
+        })
+
+      } else if (userInput === "Latta Park") {
+
+        var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Charllote NC Parks";
+  
         $.ajax({
-            url: locationDetailsQueryUrl,
+            url: idQueryUrl,
             method: "GET",
             headers: {
               Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
             }
           })
-          .then(function (locationDetails) {
-            console.log (locationDetails);
-            $("#yelp-name").html("Name: " + locationDetails.name);
-            $("#yelp-rating").html("Rating: " + locationDetails.rating);
-            $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+          .then(function ({
+            businesses
+          }) {
+            console.log(businesses);
+  
+            var businessId = businesses[6].id;
+  
+            var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+  
+            $.ajax({
+                url: locationDetailsQueryUrl,
+                method: "GET",
+                headers: {
+                  Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+                }
+              })
+              .then(function (locationDetails) {
+                console.log(locationDetails);
+  
+                $("#yelp-name").html("Name: " + locationDetails.name);
+                $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+                $("#yelp-rating").html("Rating: " + locationDetails.rating);
+                $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+                $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+                $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              })
+  
           })
-      })
-  };
 
+    } else if (userInput === "Kirk Farm Park") {
+
+      var idQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?categories=parks&limit=50&location=" + "Kirk Farm Park";
+
+      $.ajax({
+          url: idQueryUrl,
+          method: "GET",
+          headers: {
+            Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+          }
+        })
+        .then(function ({
+          businesses
+        }) {
+          console.log(businesses);
+
+          var businessId = businesses[4].id;
+
+          var locationDetailsQueryUrl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/" + businessId;
+
+          $.ajax({
+              url: locationDetailsQueryUrl,
+              method: "GET",
+              headers: {
+                Authorization: "Bearer yShZGFWIbJ9Olkk75ty9dI8OJCTDjhr4wn3sgNtn_yyXVrV4HpMUcrFByNA_K1fzoNASGPf70XBvwTn3nVV0BhvcG6tqIHs0XP46d4Jy2JEyQIGlW0IDFqCs16v5XHYx"
+              }
+            })
+            .then(function (locationDetails) {
+              console.log(locationDetails);
+
+              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
+              $("#yelp-rating").html("Rating: " + locationDetails.rating);
+              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
+              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+            })
+
+        })
+    }
+})
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -377,166 +668,64 @@ $(document).on("click", "#eventSearch", function () {
   };
   firebase.initializeApp(firebaseConfig);
   let database = firebase.database();
-// window.onload = function(){
 
-//   var firebaseConfig = {
-//     apiKey: "AIzaSyCut4P2yrq2ECQWaX5liAQ6luwvuUQVozA",
-//     authDomain: "project-1-14697.firebaseapp.com",
-//     databaseURL: "https://project-1-14697.firebaseio.com",
-//     projectId: "project-1-14697",
-//     storageBucket: "project-1-14697.appspot.com",
-//     messagingSenderId: "8693009592",
-//     appId: "1:8693009592:web:3ffc100f48ce733c"
-//   };
-//   // Initialize Firebase
-//   firebase.initializeApp(firebaseConfig);
-//   let database = firebase.database();
-// console.log("connected")
+  $("#create").click(function(event) {
 
-//  $("#create").click(function(event) {
-
-//   event.preventDefault()
+   event.preventDefault()
 
 
-//   // let users = firebase.database().child('users/')
-// console.log("hey")
+    let users = firebase.database().child('users/')
+ console.log("hey")
 
-//     let email = document.querySelector("#createUser")
-//     let username = document.querySelector("#userName")
-//     let password = document.querySelector("#createPassword")
+     let email = document.querySelector("#createUser")
+     let username = document.querySelector("#userName")
+     let password = document.querySelector("#createPassword")
     
 
 
-// firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
-//     .then(function(user) {
-//         displayName = username.value // change this back to username.value
-//         writeUserData(displayName, user) // possibly only need to pass displayName as parameter
-//     })
+ firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+     .then(function(user) {
+         displayName = username.value
+         writeUserData(displayName, user)  
+     })
 
 
-// })
+ })
 
-// //Firebase UI signin 
 
-// $("#submit").click(function(event) {
-//   event.preventDefault();
+ $("#submit").click(function(event) {
+   event.preventDefault();
   
-//   console.log("button clicked")
-//    let email = document.querySelector("#user")
-//     let password = document.querySelector("#password")
+   console.log("button clicked")
+    let email = document.querySelector("#user")
+     let password = document.querySelector("#password")
   
-//   firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+   firebase.auth().signInWithEmailAndPassword(email.value, password.value)
   
-//     firebase.auth().onAuthStateChanged(user => {
+     firebase.auth().onAuthStateChanged(user => {
 
-//     if(user) {
-//       window.location = 'main.html'; //After successful login, user will be redirected to main.html
-//         }
+     if(user) {
+       window.location = 'main.html'; 
+         }
        
-// });
+ });
   
-//   })
+   })
 
 
-// function writeUserData(displayName, user) { //possibly only need to pass in displayName here
-//     console.log("we're in")
-//     firebase.database().ref('users/' + user.uid).set({
-//         username: displayName,
-// })
-
-
-
-// $("#exampleInputEmail1").val("");
-// $("#exampleUserName").val("");
-// $("#exampleInputPassword1").val("");
-// }
+ function writeUserData(displayName, user) {
+     console.log("we're in")
+     firebase.database().ref('users/' + user.uid).set({
+         username: displayName,
+ })
 
 
 
-// // MainPage Add Event:
+ $("#exampleInputEmail1").val("");
+ $("#exampleUserName").val("");
+ $("#exampleInputPassword1").val("");
+ }
 
-// //converting Event Date and Time
-//  Date.prototype.toDatetimeLocal = 
-//     function toDatetimeLocal() {
-//       var 
-//         date = this,
-//         ten = function (i) {
-//             return (i < 10 ? '0' : '') + i;
-//         };
-//         YYYY = date.getFullYear(),
-//         MM = ten(date.getMonth() + 1),
-//         DD = ten(date.getDate()),
-//         HH = ten(date.getHours()),
-//         II = ten(date.getMinutes()),
-//         SS = ten(date.getSeconds())
-//         ;
-//         return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
-//     }
-
-// document.getElementById("addBtn").addEventListener("click", e => {
-
-//     let user = firebase.auth().currentUser;  
-//     console.log(user)  
-
-//     // if(user)
-//     //     console.log(db.collection("users").doc(user.uid))
-//     // else
-//     //     alert('user not logged in')
-
-//   let DT = document.getElementById("DT")
-//   let leaderName = document.querySelector("#squadLeader")
-//   leaderName = leaderName.value
-//   let eventDescription = document.querySelector("#eventDescription")
-//   eventDescription = eventDescription.value
-//   let eventLocation = document.querySelector("#location")
-//   eventLocation = eventLocation.value
-//   let eventName = document.querySelector("#inputEventName")
-//   eventName = eventName.value
-//   let eventRef = firebase.database().ref("events")
-//   let newEventRef = eventRef.push();
-//   let ISOString = new Date(DT.value).toISOString();
-//   let finalTime = DT.value = new Date(ISOString).toDatetimeLocal();
-//   let name = user.displayName
-//   console.log(finalTime)
-//   console.log(name)
-
-// console.log(eventDescription)
-
-
-//       newEventRef.set({
-      
-//     leader: leaderName,
-//     name: eventName,
-//     eventDate: finalTime,
-//     location: eventLocation,
-//     description: eventDescription,
-//     })
-
-// });
-
-// // var eventRef = ref.child(key)
-// let eventRef = firebase.database().ref("events")
-// eventRef.on('child_added', function(childSnapshot){
-
-  
-//   let eventButton = $("<button>").addClass("eventButton")
-//   let eventTitle = $("<p>").text(childSnapshot.val().name)
-//   let eventLeader = $("<p>").text(childSnapshot.val().leader)
-//   let eventDate = $("<p>").text(childSnapshot.val().eventDate)
-//   let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
-
-//   $(eventButton).append(eventLocation)
-//   $(eventButton).append(eventDate)
-//   $(eventButton).append(eventLeader)
-//   $(eventButton).append(eventTitle)
-
-//   $("#event1").prepend(eventButton)
-
-
-
-
-
-// })
 
 console.log("connected")
 
@@ -562,18 +751,14 @@ function toDatetimeLocal() {
     return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
 }
 
-  //     usersRef = firebase.database().ref('users')
-  // usersRef.orderBy("uid").startAt(uid).endAt(uid).on("value", function(snapshot) {
-  //   var user = snapshot.val();
-  //   console.log(user)
-  // });
+       usersRef = firebase.database().ref('users')
+   usersRef.orderBy("uid").startAt(uid).endAt(uid).on("value", function(snapshot) {
+     var user = snapshot.val();
+     console.log(user)
+   });
   
       
     
-          // if(user)
-          //     console.log(db.collection("users").doc(user.uid))
-          // else
-          //     alert('user not logged in')
     
        let DT = document.getElementById("DT")
        let leaderName = document.querySelector("#squadLeader")
@@ -680,8 +865,4 @@ function toDatetimeLocal() {
      document.getElementById('get_file').onclick = function() {
        document.getElementById('my_file').click();
      };
-    
-     }
-    
-
-
+}
