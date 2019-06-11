@@ -76,6 +76,8 @@ body {
 
 #yelp-display {
     width: 50%;
+    position: absolute;
+    left: 50%;
 }
 
 #logo {
@@ -246,4 +248,11 @@ img {
   color: #999;
 }
 
-    
+  #eventTitle {
+    font-size: 28px;
+  }
+
+  #eventLocation {
+    font-size: 24px;
+    font-weight: 5px;
+  }

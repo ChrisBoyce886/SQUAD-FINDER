@@ -614,17 +614,19 @@ function toDatetimeLocal() {
     
        var event = childSnapshot.val(); 
      console.log(event.leader)
-       let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key)
-       let eventTitle = $("<p>").text(childSnapshot.val().name)
-       let eventLeader = $("<p>").text(childSnapshot.val().leader)
-       let eventDate = $("<p>").text(childSnapshot.val().eventDate)
-       let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
+       let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key).addClass("btn-success").addClass("shadow-lg p-3 mb-5 rounded")
+       let eventTitle = $("<p>").text("Event Name: " +childSnapshot.val().name).attr("id", "eventTitle")
+      //  let eventLeader = $("<p>").text(childSnapshot.val().leader)
+      //  let eventDate = $("<p>").text(childSnapshot.val().eventDate)
+       let eventLocation = $("<p>").attr("id", "eventLocation").text("Location: " +childSnapshot.val().location)
     
-       $(eventButton).append(eventLocation)
-       $(eventButton).append(eventDate)
-       $(eventButton).append(eventLeader)
+      
+      //  $(eventButton).append(eventDate)
+      //  $(eventButton).append(eventLeader)
        $(eventButton).append(eventTitle)
-    
+     $(eventButton).append(eventLocation)
+
+     
        let contentDiv = $("<div>").addClass("content");
         $(eventButton).append(contentDiv)
        $("#events-dump").prepend(eventButton)
