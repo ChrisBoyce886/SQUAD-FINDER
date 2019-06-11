@@ -40,16 +40,6 @@ body {
     
 }
 
-#eventLocation {
-  color:white;
-  
-}
-
-#eventLocation:hover {
-    color: #1fa83f;
-    text-decoration: underline;
-}
-
 #API-display {
     display: flex;
     text-align: center;
@@ -74,7 +64,7 @@ body {
 #google-maps-display {
     height: 100%;
     width: 50%; 
-      
+    
 }
 
 #location-SearchBox {
@@ -86,6 +76,8 @@ body {
 
 #yelp-display {
     width: 50%;
+    position: absolute;
+    left:50%;
 }
 
 #logo {
