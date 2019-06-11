@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 //Geolocation 
 var marker;
@@ -245,6 +246,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 })
 
 
+=======
+>>>>>>> d258ab9dbb6dde3b5e2e20ff50e58fcc994b2ee2
 window.onload = function(){
 
 // ///////////////////////////////////////////////////////////////////////////////////////
@@ -413,6 +416,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 }geolocation()
+<<<<<<< HEAD
 
 }
 
@@ -445,10 +449,47 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
  
  
+=======
+
+}
+
+//$(document).on("click", "#eventSearch", function () {
+  //    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    //return false;
+
+// var eventmarker =    {
+//     position: parkLocation[i],
+//     map: map,
+//     zoom: 15,
+//     optimized: false,
+//     icon: "assets/images/locationmarker.png",
+//     title: parkLocation.name,
+//     draggable: false,
+//     animation: google.maps.Animation.DROP
+// }
+// google.maps.event.addListener(marker, toggleBounce)
+
+// function toggleBounce() {
+>>>>>>> d258ab9dbb6dde3b5e2e20ff50e58fcc994b2ee2
+
+//   if (marker.getAnimation() != null) {
+//     marker.setAnimation(null);
+//   } else {
+//     marker.setAnimation(google.maps.Animation.BOUNCE);
+//   }
+// }
+//  console.log($(this).children().first().text());
+ //});
+
+ 
+ 
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> d258ab9dbb6dde3b5e2e20ff50e58fcc994b2ee2
 // ///////////////////////////////////////////////////////////////////////////////////////
 //                                     //FIREBASE SECTION
 // //////////////////////////////////////////////////////////////////////////////////////
@@ -958,6 +999,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
  });
   
    })
+<<<<<<< HEAD
 
 
  function writeUserData(displayName, user) {
@@ -967,6 +1009,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
  })
 
 
+=======
+
+
+ function writeUserData(displayName, user) {
+     console.log("we're in")
+     firebase.database().ref('users/' + user.uid).set({
+         username: displayName,
+ })
+>>>>>>> d258ab9dbb6dde3b5e2e20ff50e58fcc994b2ee2
 
  $("#exampleInputEmail1").val("");
  $("#exampleUserName").val("");
@@ -974,6 +1025,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
  }
 
 
+<<<<<<< HEAD
 console.log("connected")
 
 
@@ -1056,48 +1108,45 @@ console.log(eventDescription)
     location: eventLocation,
     description: eventDescription,
     })
+=======
+ $("#exampleInputEmail1").val("");
+ $("#exampleUserName").val("");
+ $("#exampleInputPassword1").val("");
+ }
+>>>>>>> d258ab9dbb6dde3b5e2e20ff50e58fcc994b2ee2
 
-});
 
-// var eventRef = ref.child(key)
-let eventRef = firebase.database().ref("events")
-eventRef.on('child_added', function(childSnapshot){
-
-  
-  let eventButton = $("<button>").addClass("eventButton")
-  let eventTitle = $("<p>").text(childSnapshot.val().name)
-  let eventLeader = $("<p>").text(childSnapshot.val().leader)
-  let eventDate = $("<p>").text(childSnapshot.val().eventDate)
-  let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
-
-  $(eventButton).append(eventLocation)
-  $(eventButton).append(eventDate)
-  $(eventButton).append(eventLeader)
-  $(eventButton).append(eventTitle)
-
-  $("#event1").prepend(eventButton)
+console.log("connected")
 
 
 
+  document.getElementById("addBtn").addEventListener("click", e => {
 
-
-})
-
-
-
-
-firebase.auth().onAuthStateChanged(user => {
-
-  if(user) {
-console.log("you're logged in!")     
+    event.preventDefault()
+         Date.prototype.toDatetimeLocal = 
+function toDatetimeLocal() {
+  var 
+    date = this,
+    ten = function (i) {
+        return (i < 10 ? '0' : '') + i;
+    };
+    YYYY = date.getFullYear(),
+    MM = ten(date.getMonth() + 1),
+    DD = ten(date.getDate()),
+    HH = ten(date.getHours()),
+    II = ten(date.getMinutes()),
+    SS = ten(date.getSeconds())
+    ;
+    return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
 }
-     
-});
 
-
-$(document).on("click", ".eventButton", function () {
-
+       usersRef = firebase.database().ref('users')
+   usersRef.orderBy("uid").startAt(uid).endAt(uid).on("value", function(snapshot) {
+     var user = snapshot.val();
+     console.log(user)
+   });
   
+<<<<<<< HEAD
   let parkLocation = document.getElementById("eventLocation")
   
   console.log($(this).children().first().text());
@@ -1225,3 +1274,112 @@ function toDatetimeLocal() {
     
           // if(user)
           //     console.log(db.collection("users").doc(user.uid))
+=======
+      
+    
+    
+       let DT = document.getElementById("DT")
+       let leaderName = document.querySelector("#squadLeader")
+       leaderName = leaderName.value
+       let eventDescription = document.querySelector("#eventDescription")
+       eventDescription = eventDescription.value
+       let eventLocation = document.querySelector("#location")
+       eventLocation = eventLocation.value
+       let eventName = document.querySelector("#inputEventName")
+       eventName = eventName.value
+       let eventRef = firebase.database().ref("events")
+       let newEventRef = eventRef.push();
+       let ISOString = new Date(DT.value).toISOString();
+       let finalTime = DT.value = new Date(ISOString).toDatetimeLocal();
+      //  let name = user.displayName
+       console.log(finalTime)
+       console.log(name)
+    
+     console.log(eventDescription)
+    
+    
+           newEventRef.set({
+          
+         leader: leaderName,
+         name: eventName,
+         eventDate: finalTime,
+         location: eventLocation,
+         description: eventDescription,
+         })
+    
+    
+       });
+    
+    // var eventRef = ref.child(key)
+     let eventRef = firebase.database().ref("events")
+     eventRef.on('child_added', function(childSnapshot){
+       console.log(childSnapshot.val())
+    
+       var event = childSnapshot.val(); 
+     console.log(event.leader)
+       let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key)
+       let eventTitle = $("<p>").text(childSnapshot.val().name)
+       let eventLeader = $("<p>").text(childSnapshot.val().leader)
+       let eventDate = $("<p>").text(childSnapshot.val().eventDate)
+       let eventLocation = $("<p>").attr("id", "eventLocation").text(childSnapshot.val().location)
+    
+       $(eventButton).append(eventLocation)
+       $(eventButton).append(eventDate)
+       $(eventButton).append(eventLeader)
+       $(eventButton).append(eventTitle)
+    
+       let contentDiv = $("<div>").addClass("content");
+        $(eventButton).append(contentDiv)
+       $("#events-dump").prepend(eventButton)
+    
+       var elm = document.createElement('p')
+       elm.id = 'event-'+childSnapshot.key;
+       elm.innerText = event.leader;
+       let contentDivSelector = document.querySelector('.content')
+       contentDivSelector.appendChild(elm);
+    
+       let eventName = document.createElement("p")
+       eventName.id = "eventNameInButton"
+       eventName.innerText = event.name
+       $(elm).append(eventName)
+    
+       var coll = document.getElementsByClassName(childSnapshot.key);
+    
+       for (i = 0; i < coll.length; i++) {
+         coll[i].addEventListener("click", function() {
+           this.classList.toggle("active");
+           var content = elm;
+           console.log(content)
+            if (content.style.display === "block") {
+             content.style.display = "none";
+            } else {
+             content.style.display = "block";
+            }
+         });
+       }
+     })
+    
+     firebase.auth().onAuthStateChanged(user => {
+    
+       if(user) {
+     console.log("you're logged in!")     
+     }
+         
+     });
+    
+     $(document).on("click", ".eventButton", function parkLocation () {
+    
+       let parkLocation = document.getElementById("eventLocation")
+      
+       console.log($(this).children().first().text());
+
+       return $(this).children().first().text();
+    
+     })
+    
+    
+     document.getElementById('get_file').onclick = function() {
+       document.getElementById('my_file').click();
+     };
+}
+>>>>>>> d258ab9dbb6dde3b5e2e20ff50e58fcc994b2ee2
