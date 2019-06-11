@@ -7,7 +7,7 @@ window.onload = function(){
 //Geolocation 
 var marker;
 var usermarker;
-var parkLocation = [
+var parkLocations = [
     {name: "Freedom Park", lat: 35.193978, lng: -80.842636},
     {name: "Frazier Park", lat: 35.232251, lng: -80.858032},
     {name: "Revolution Park", lat: 35.214758, lng: -80.876093},
@@ -18,6 +18,7 @@ var parkLocation = [
     {name: "Renaissance Park", lat: 35.180768, lng: -80.90757}
 ]
 
+
 function initMap() {
   var mapCenter = {lat: 35.227085, lng: -80.843124};
   map = new google.maps.Map(document.getElementById('google-maps-display'), {
@@ -26,17 +27,17 @@ function initMap() {
   });   
 
   
-  for (i=0;i < parkLocation.length; i++){
-   mapmarkerFinal = parkLocation[i];
+  for (i = 0; i < parkLocations.length; i++){
+   mapmarkerFinal = parkLocations[i];
 
    var marker = new google.maps.Marker({   
-    position: mapmarkerFinal,
-    map: map,
-    icon: "assets/images/urbanpark.png",
-    title: mapmarkerFinal.name,
-    optimized: false,
-    draggable: false,
-    animation: google.maps.Animation.DROP,
+      position: mapmarkerFinal,
+      map: map,
+      icon: "assets/images/urbanpark.png",
+      title: mapmarkerFinal.name,
+      optimized: false,
+      draggable: false,
+      animation: google.maps.Animation.DROP,
   }); 
   //marker.addListener('click', toggleYelp); 
 }
@@ -160,12 +161,14 @@ infoWindow = new google.maps.InfoWindow;
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: Geolocation request denied. \n Please enter you location below!' :
+                        'Error: Geolocation request denied. \n Please enter your location below!' :
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
 
-}geolocation()
+}
+
+geolocation()
 
 }
 
@@ -174,12 +177,12 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     //return false;
 
 // var eventmarker =    {
-//     position: parkLocation[i],
+//     position: parkLocations[i],
 //     map: map,
 //     zoom: 15,
 //     optimized: false,
 //     icon: "assets/images/locationmarker.png",
-//     title: parkLocation.name,
+//     title: parkLocations.name,
 //     draggable: false,
 //     animation: google.maps.Animation.DROP
 // }

@@ -40,6 +40,16 @@ body {
     
 }
 
+#eventLocation {
+  color:white;
+  
+}
+
+#eventLocation:hover {
+    color: #1fa83f;
+    text-decoration: underline;
+}
+
 #API-display {
     display: flex;
     text-align: center;
