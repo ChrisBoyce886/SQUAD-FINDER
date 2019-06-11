@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -51,6 +53,11 @@
             <div class="modal-body">
             <form>
                 <div class="form-group">
+                    <label for="user">Full Name</label>
+                    <input class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Enter name">
+                    
+                  </div>
+                <div class="form-group">
                   <label for="user">Email address</label>
                   <input type="email" class="form-control" id="createUser" aria-describedby="emailHelp" placeholder="Enter email">
                   
@@ -59,8 +66,8 @@
                   <label for="password">Password</label>
                   <input id="createPassword" type="password" class="form-control" placeholder="Password">
                 </div>
-                <div class="submit">
-                  <button id="create" type="submit" class="btn btn-success">Submit</button>
+              <div class="submit">
+                  <button id="create" class="btn btn-success">Submit</button>
                 </div>
               </form>
         </div>
@@ -97,7 +104,7 @@
                   <input id="password" type="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="submit">
-                  <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                  <button id="submit" class="btn btn-success">Log-in</button>
                 </div>
               </form>
         </div>
@@ -126,7 +133,9 @@
      <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTwlnvuNPf2SQsdtovRTH6dyTablFaooE&callback=initMap">                                                    
     </script>
-    <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+    <!-- <script type="text/javascript" src="assets/javascript/javascript.js"></script> -->
+    <script type="text/javascript" src="assets/js/javascript.js"></script>
+
    
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
