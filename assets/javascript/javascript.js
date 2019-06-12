@@ -892,9 +892,8 @@ function toDatetimeLocal() {
           moveMap()  
           return false;       
        });
-       
+            $(eventButton).append(eventLocation)
            $(eventButton).append(eventTitle)
-       $(eventButton).append(eventLocation)
       //  $(eventButton).append(eventDate)
       //  $(eventButton).append(eventLeader)
     
