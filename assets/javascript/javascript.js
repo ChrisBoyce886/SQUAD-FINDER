@@ -802,8 +802,8 @@ function toDatetimeLocal() {
     
        var event = childSnapshot.val(); 
      console.log(event.leader)
-       let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key)
-       let eventTitle = $("<p>").text(childSnapshot.val().name)
+       let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key).addClass("rounded")
+       let eventTitle = $("<p>").text(childSnapshot.val().name).attr("id", "eventTitle")
        let eventLeader = $("<p>").text(childSnapshot.val().leader)
        let eventDate = $("<p>").text(childSnapshot.val().eventDate)
        let eventLocation = $("<a href=''>").attr("id", "eventLocation").text(childSnapshot.val().location)
@@ -816,11 +816,10 @@ function toDatetimeLocal() {
           moveMap()                 
        });
        
-    
+           $(eventButton).append(eventTitle)
        $(eventButton).append(eventLocation)
-       $(eventButton).append(eventDate)
-       $(eventButton).append(eventLeader)
-       $(eventButton).append(eventTitle)
+      //  $(eventButton).append(eventDate)
+      //  $(eventButton).append(eventLeader)
     
        let contentDiv = $("<div>").addClass("content");
         $(eventButton).append(contentDiv)

@@ -260,3 +260,11 @@ img {
   height: 300px;
   width: 300px;
 }
+
+.eventButton {
+  margin-top:3%;
+}
+
+#eventTitle {
+  font-size:25px;
+}
