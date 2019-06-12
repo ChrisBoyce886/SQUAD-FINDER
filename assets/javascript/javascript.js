@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 /////////////////////////////////////////////////////////////////////////////////////////
+=======
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> ed8f85d9d41d23320e7fd5ddda2212eb3ff33b60
+// ///////////////////////////////////////////////////////////////////////////////////////
+>>>>>>> master
                                      //GOOGLE API SECTION
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -202,7 +211,60 @@ geolocation()
 //     console.log(search);
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
+=======
+// ///////////////////////////////////////////////////////////////////////////////////////
+//                                   //GOOGLE API SECTION
+// //////////////////////////////////////////////////////////////////////////////////////
+ 
+// //Geolocation
+// var map, infoWindow;
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById('google-maps-display'), {
+//     center: {lat: 35.227, lng: -80.843},
+//     zoom: 6
+//   });
+//   infoWindow = new google.maps.InfoWindow;
+
+//   // Try HTML5 geolocation.
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(function(position) {
+//       var pos = {
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude
+//       };
+
+//       infoWindow.setPosition(pos);
+//       infoWindow.setContent('Location found.');
+//       infoWindow.open(map);
+//       map.setCenter(pos);
+//     }, function() {
+//       handleLocationError(true, infoWindow, map.getCenter());
+//     });
+//   } else {
+//     // Browser doesn't support Geolocation
+//     handleLocationError(false, infoWindow, map.getCenter());
+//   }
+// }
+
+// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+//   infoWindow.setPosition(pos);
+//   infoWindow.setContent(browserHasGeolocation ?
+//                         'Error: The Geolocation service failed.' :
+//                         'Error: Your browser doesn\'t support geolocation.');
+//   infoWindow.open(map);
+// }
+
+<<<<<<< HEAD
+window.onload = function(){
+>>>>>>> ed8f85d9d41d23320e7fd5ddda2212eb3ff33b60
+=======
+>>>>>>> master
+
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
 ///////////////////////////////////////////////////////////////////////////////////////
 //YELP API SECTION
 //////////////////////////////////////////////////////////////////////////////////////
@@ -734,6 +796,14 @@ function toDatetimeLocal() {
        let eventDate = $("<p>").text(childSnapshot.val().eventDate)
        let eventLocation = $("<a href=''>").attr("id", "eventLocation").text(childSnapshot.val().location)
 
+<<<<<<< HEAD
+       $("#eventLocation").click(function(event){
+          event.preventDefault();
+          $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+          var userInput = $(this).children().first().text();
+          console.log(userInput)     
+          moveMap()                 
+=======
        $("#eventLocation").click(function(e){
           e.preventDefault();
           $('html, body').animate({scrollTop:$(document).height()}, 'slow');
@@ -741,6 +811,7 @@ function toDatetimeLocal() {
           console.log(userInput);  
           moveMap()  
           return false;       
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
        });
        
     
@@ -790,6 +861,25 @@ function toDatetimeLocal() {
          
      });
     
+<<<<<<< HEAD
+     $(document).on("click", ".eventButton", function parksLocation () {
+       
+      var userInput = $(this).children().first().text();
+        console.log(userInput)
+     
+      function moveMap(){   
+
+        for (i = 0; i < parkLocations.length; i++){
+          
+          parkLocationMatch = parkLocations[i] 
+            console.log(parkLocationMatch)
+
+        if (userInput == parkLocationMatch.name){
+          
+        mapCenter = parkLocationMatch;
+          console.log(parkLocationMatch)
+       
+=======
 //////////////////////////////////////////////////////////
 ////////////////// GOOGLE API INSERT /////////////////////
 //////////////////////////////////////////////////////////
@@ -813,6 +903,7 @@ $(document).on("click", ".eventButton", function parksLocation () {
 //If park name matches user input/park location
   if (userInput == parkLocationMatch.name){
           
+<<<<<<< HEAD
     mapCenter = parkLocationMatch;
     console.log(parkLocationMatch);
 
@@ -851,10 +942,60 @@ $(document).on("click", ".eventButton", function parksLocation () {
 //Run moveMap function
 moveMap();
 
+=======
+        mapCenter = parkLocationMatch;
+          console.log(parkLocationMatch);
+
+    //move map center to the location coordinates of the park, set to satellite imagery, and zoom in
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
+        map = new google.maps.Map(document.getElementById('google-maps-display'),{
+          center: mapCenter,
+          zoom: 18,
+          icon: "assets/images/urbanpark.png",
+          title: parkLocationMatch.name,
+<<<<<<< HEAD
+          optimized: false,
+          animation: google.maps.Animation.DROP,
+        });
+
+=======
+          mapTypeId: 'satellite',
+          optimized: false,
+          animation: google.maps.Animation.BOUNCE,
+        });
+        
+
+    //for loop to set the markers for all the other parks if user decides to move the map around 
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
+        for (i = 0; i < parkLocations.length; i++){
+
+          mapmarkerFinal = parkLocations[i];   
+
+          var marker = new google.maps.Marker({   
+            position: mapmarkerFinal,
+            map: map,
+            icon: "assets/images/urbanpark.png",
+            title: mapmarkerFinal.name,
+            optimized: false,
+            draggable: false,
+            animation: google.maps.Animation.DROP,        
+         });  
+        }
+      }
+        else {
+          console.log("fail")          
+        }
+      }
+    }
+    moveMap();
+<<<<<<< HEAD
+=======
+>>>>>>> master
 ///////////////////////////////////////////////////////////////
 ////////////////// END OF GOOGLE API INSERT ///////////////////
 ///////////////////////////////////////////////////////////////
     
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
 
        let parkLocation = document.getElementById("eventLocation")
       
