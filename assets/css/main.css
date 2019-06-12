@@ -56,7 +56,6 @@ body {
     width: 90%;
     height: 600px;
     margin: 0 auto;
-   
     
 }
 
@@ -66,7 +65,7 @@ body {
 }
 
 #google-maps-box {
-    height: 100%;
+    height: 83%;
     width: 100%;
     
 }
