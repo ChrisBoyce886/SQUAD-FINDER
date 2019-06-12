@@ -4,10 +4,10 @@
 =======
 >>>>>>> ed8f85d9d41d23320e7fd5ddda2212eb3ff33b60
 // ///////////////////////////////////////////////////////////////////////////////////////
-//                                     //GOOGLE API SECTION
+                                     //GOOGLE API SECTION
 // //////////////////////////////////////////////////////////////////////////////////////
 
-//Geolocation 
+
 var marker;
 var usermarker;
 var parkLocations = [
@@ -15,10 +15,11 @@ var parkLocations = [
     {name: "Frazier Park", lat: 35.232251, lng: -80.858032},
     {name: "Revolution Park", lat: 35.214758, lng: -80.876093},
     {name: "Southside Park", lat: 35.207150, lng: -80.872784},
-    {name: "Bryant Park", lat: 35.227278, lng: -80.870150},
+    {name: "Bryant Neighborhood Park", lat: 35.227278, lng: -80.870150},
     {name: "Kirk Farm Park", lat: 35.321008, lng: -80.731887},
     {name: "Nevin Community Park", lat: 35.302511, lng: -80.834128},
-    {name: "Renaissance Park", lat: 35.180768, lng: -80.90757}
+    {name: "Renaissance Park", lat: 35.180768, lng: -80.90757},
+    {name: "Latta Park", lat: 35.209623, lng: -80.850718}
 ]
 
 
@@ -68,10 +69,8 @@ function initMap() {
 
 
 // Create the search box and link it to the UI element.
-
 var input = document.getElementById('location-SearchBox');
 var searchBox = new google.maps.places.SearchBox(input);
-map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
 // Bias the SearchBox results towards current map's viewport.
 map.addListener('bounds_changed', function() {
@@ -126,6 +125,7 @@ searchBox.addListener('places_changed', function() {
   });
   map.fitBounds(bounds);
 });
+
 
 infoWindow = new google.maps.InfoWindow;
 
@@ -296,8 +296,12 @@ geolocation()
 //   infoWindow.open(map);
 // }
 
+<<<<<<< HEAD
 window.onload = function(){
 >>>>>>> ed8f85d9d41d23320e7fd5ddda2212eb3ff33b60
+=======
+
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
 ///////////////////////////////////////////////////////////////////////////////////////
 //YELP API SECTION
 //////////////////////////////////////////////////////////////////////////////////////
@@ -338,12 +342,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -377,12 +383,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -416,12 +424,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -455,12 +465,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
-              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#yelp-photos").attr("src", "assets/images/bryant-park.jpeg");
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -494,12 +506,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -533,12 +547,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -572,12 +588,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -612,12 +630,14 @@ window.onload = function(){
               .then(function (locationDetails) {
                 console.log(locationDetails);
   
-                $("#yelp-name").html("Name: " + locationDetails.name);
+                $("#yelp-name").html(locationDetails.name);
                 $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
                 $("#yelp-rating").html("Rating: " + locationDetails.rating);
-                $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+                //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
                 $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
-                $("#yelp-photos").attr("src", locationDetails.photos[1]);
+                $("#yelp-photos").attr("src", locationDetails.photos[2]);
+                $("#placeholder-photos").css('display', 'none');
+                $("#yelp-photos").css('display', 'inline');
               })
   
           })
@@ -652,12 +672,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -763,13 +785,7 @@ function toDatetimeLocal() {
     return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
 }
 
-       usersRef = firebase.database().ref('users')
-   usersRef.orderBy("uid").startAt(uid).endAt(uid).on("value", function(snapshot) {
-     var user = snapshot.val();
-     console.log(user)
-   });
-  
-      
+          
     
     
        let DT = document.getElementById("DT")
@@ -817,12 +833,23 @@ function toDatetimeLocal() {
        let eventDate = $("<p>").text(childSnapshot.val().eventDate)
        let eventLocation = $("<a href=''>").attr("id", "eventLocation").text(childSnapshot.val().location)
 
+<<<<<<< HEAD
        $("#eventLocation").click(function(event){
           event.preventDefault();
           $('html, body').animate({scrollTop:$(document).height()}, 'slow');
           var userInput = $(this).children().first().text();
           console.log(userInput)     
           moveMap()                 
+=======
+       $("#eventLocation").click(function(e){
+          e.preventDefault();
+          $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+          var userInput = $(this).children().first().text();
+          console.log(userInput);
+          console.log("FAIL AGAINNNN")    
+          moveMap()  
+          return false;       
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
        });
        
     
@@ -861,6 +888,8 @@ function toDatetimeLocal() {
          });
        }
      })
+
+    
     
      firebase.auth().onAuthStateChanged(user => {
     
@@ -870,6 +899,7 @@ function toDatetimeLocal() {
          
      });
     
+<<<<<<< HEAD
      $(document).on("click", ".eventButton", function parksLocation () {
        
       var userInput = $(this).children().first().text();
@@ -887,15 +917,55 @@ function toDatetimeLocal() {
         mapCenter = parkLocationMatch;
           console.log(parkLocationMatch)
        
+=======
+//////////////////////////////////////////////////////////
+////////////////// GOOGLE API INSERT /////////////////////
+//////////////////////////////////////////////////////////
+
+     //click function to find location when event button is clicked and moves map to that park location
+     //set click function
+     $(document).on("click", ".eventButton", function parksLocation () {
+     
+      //set userInput to the selected event location
+      var userInput = $(this).children().first().text();
+        console.log(userInput);
+
+     //set function to move the map to the park location
+      function moveMap(){   
+
+    //loop through all the parks and set new variable
+        for (i = 0; i < parkLocations.length; i++){
+          
+          parkLocationMatch = parkLocations[i];
+            console.log(parkLocationMatch);
+
+    //if park name matches user input/park location
+        if (userInput == parkLocationMatch.name){
+          
+        mapCenter = parkLocationMatch;
+          console.log(parkLocationMatch);
+
+    //move map center to the location coordinates of the park, set to satellite imagery, and zoom in
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
         map = new google.maps.Map(document.getElementById('google-maps-display'),{
           center: mapCenter,
           zoom: 18,
           icon: "assets/images/urbanpark.png",
           title: parkLocationMatch.name,
+<<<<<<< HEAD
           optimized: false,
           animation: google.maps.Animation.DROP,
         });
 
+=======
+          mapTypeId: 'satellite',
+          optimized: false,
+          animation: google.maps.Animation.BOUNCE,
+        });
+        
+
+    //for loop to set the markers for all the other parks if user decides to move the map around 
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
         for (i = 0; i < parkLocations.length; i++){
 
           mapmarkerFinal = parkLocations[i];   
@@ -917,6 +987,13 @@ function toDatetimeLocal() {
       }
     }
     moveMap();
+<<<<<<< HEAD
+=======
+///////////////////////////////////////////////////////////////
+////////////////// END OF GOOGLE API INSERT ///////////////////
+///////////////////////////////////////////////////////////////
+    
+>>>>>>> d5f1175655b2d54a0033a093658558ade2c40833
 
        let parkLocation = document.getElementById("eventLocation")
       
@@ -930,4 +1007,5 @@ function toDatetimeLocal() {
      document.getElementById('get_file').onclick = function() {
        document.getElementById('my_file').click();
      };
+
 }
