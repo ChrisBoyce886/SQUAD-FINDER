@@ -332,7 +332,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
 
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -379,7 +380,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
 
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -426,7 +428,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
 
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -473,7 +476,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
 
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -520,7 +524,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
 
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -567,7 +572,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
 
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -614,7 +620,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
               
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -662,7 +669,8 @@ window.onload = function(){
                 $("#yelp-name").html(locationDetails.name);
                 $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
                 $("#yelp-rating").html("Rating: " + locationDetails.rating);
-                //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+                $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+                $("#yelp-reviews-url").attr("href", locationDetails.url);
 
                 if (locationDetails.display_phone === "") {
                   $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
@@ -710,7 +718,8 @@ window.onload = function(){
               $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
+              $("#yelp-reviews-url").attr("href", locationDetails.url);
 
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
