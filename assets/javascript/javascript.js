@@ -806,8 +806,7 @@ function toDatetimeLocal() {
           e.preventDefault();
           $('html, body').animate({scrollTop:$(document).height()}, 'slow');
           var userInput = $(this).children().first().text();
-          console.log(userInput);
-          console.log("FAIL AGAINNNN")    
+          console.log(userInput);  
           moveMap()  
           return false;       
        });
