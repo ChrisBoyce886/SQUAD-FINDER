@@ -335,6 +335,8 @@ window.onload = function(){
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -374,6 +376,8 @@ window.onload = function(){
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -413,6 +417,8 @@ window.onload = function(){
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -451,7 +457,9 @@ window.onload = function(){
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
-              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#yelp-photos").attr("src", "assets/images/bryant-park.jpeg");
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -491,6 +499,8 @@ window.onload = function(){
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -530,6 +540,8 @@ window.onload = function(){
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -569,6 +581,8 @@ window.onload = function(){
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -608,7 +622,9 @@ window.onload = function(){
                 $("#yelp-rating").html("Rating: " + locationDetails.rating);
                 $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
                 $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
-                $("#yelp-photos").attr("src", locationDetails.photos[1]);
+                $("#yelp-photos").attr("src", locationDetails.photos[2]);
+                $("#placeholder-photos").css('display', 'none');
+                $("#yelp-photos").css('display', 'inline');
               })
   
           })
@@ -649,6 +665,8 @@ window.onload = function(){
               $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
