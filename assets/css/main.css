@@ -259,4 +259,16 @@ img {
 #yelp-photos {
   height: 300px;
   width: 300px;
+  display: none;
+}
+
+#placeholder-photos {
+  height: 500px;
+  width: 500px;
+}
+
+#yelp-display {
+  width: 50%;
+  position: absolute;
+  left: 50%;
 }
