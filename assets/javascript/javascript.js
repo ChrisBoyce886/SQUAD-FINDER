@@ -329,12 +329,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -368,12 +370,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -407,12 +411,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -446,12 +452,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
-              $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#yelp-photos").attr("src", "assets/images/bryant-park.jpeg");
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -485,12 +493,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -524,12 +534,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -563,12 +575,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
@@ -603,12 +617,14 @@ window.onload = function(){
               .then(function (locationDetails) {
                 console.log(locationDetails);
   
-                $("#yelp-name").html("Name: " + locationDetails.name);
+                $("#yelp-name").html(locationDetails.name);
                 $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
                 $("#yelp-rating").html("Rating: " + locationDetails.rating);
-                $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+                //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
                 $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
-                $("#yelp-photos").attr("src", locationDetails.photos[1]);
+                $("#yelp-photos").attr("src", locationDetails.photos[2]);
+                $("#placeholder-photos").css('display', 'none');
+                $("#yelp-photos").css('display', 'inline');
               })
   
           })
@@ -643,12 +659,14 @@ window.onload = function(){
             .then(function (locationDetails) {
               console.log(locationDetails);
 
-              $("#yelp-name").html("Name: " + locationDetails.name);
+              $("#yelp-name").html(locationDetails.name);
               $("#yelp-address").html("Address: " + locationDetails.location.display_address[0] + ", " + locationDetails.location.display_address[1]);
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
-              $("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
+              //$("#yelp-review-count").html("Review Count: " + locationDetails.review_count);
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
+              $("#placeholder-photos").css('display', 'none');
+              $("#yelp-photos").css('display', 'inline');
             })
 
         })
