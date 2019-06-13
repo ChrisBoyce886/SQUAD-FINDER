@@ -62,5 +62,16 @@ body {
 
 .btn {
     margin: 0 auto;
+    color: white !important;
+    background-color: rgb(236,27,34) !important;
+
 }
 
+.close {
+    display: none;
+}
+
+.modal-header {
+    margin: 0 auto !important;
+    border-bottom-color: white !important
+}
