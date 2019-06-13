@@ -37,7 +37,7 @@ body {
     width: 100%;
     height: 800px;
     overflow: scroll;
-    
+  background: white;  
 }
 
 #eventLocation {
@@ -148,7 +148,7 @@ a {
   }
 
   .active, .collapsible:hover {
-    background-color: #555;
+    background-color: #777777;
   }
 
   .content {
@@ -171,9 +171,9 @@ a {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
   }
 
-  .navBar {
+  .navbar {
       width:100%;
-      height:200px;
+      height:140px;
       background-color:white;
   }
 
@@ -237,8 +237,8 @@ a {
     width: 128px;
     height: 128px;
     border: 8px solid rgba(255, 255, 255, 0.7);
-    position: absolute;
-    background-color:black;
+    margin-left: 1000%;
+    background-color:white;
 }
 img {
     max-width: 100%;
@@ -262,7 +262,25 @@ img {
   transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
   color: #999;
 }
+.card-title {
+  margin-left: 6.5%;
+  color:black;
+  margin-top:5%; 
 
+}
+
+.squad-finder-logo {
+  border-bottom: 2px black solid;
+  width:100%;
+  margin-top:4.5%;
+
+} 
+
+.squad-finder {
+  margin-top:-8%;
+  height:200px;
+  width:200px;
+}
 #yelp-photos {
   height: 270px;
   width: 300px;
@@ -286,4 +304,40 @@ img {
     margin-bottom: 1em;
     margin-left: 0;
     margin-right: 0;
+}
+
+.eventButton {
+  margin-top:2%;
+  background: #555555
+}
+
+#eventTitle {
+  font-size: 45px;
+  font-family: 'Cinzel', serif;
+
+}
+
+#eventLocation {
+  font-size: 20px;
+  font-family: 'Anton', sans-serif;
+}
+
+#eventLeaderInButton {
+  color:white;
+  
+}
+
+#eventNameInButton {
+  color:white;
+}
+
+.content {
+  font-size: 25px;
+  background: #555555;
+  
+}
+
+#leaderHeader {
+  color:white;
+  margin-left:-35%;
 }
