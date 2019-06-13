@@ -9,8 +9,9 @@
 
     
 
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script> 
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+
  
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,11 +19,11 @@
 </head>
   <body>
     <!-- NAV BAR?-->
-    <div class = "navBar">
+    <div class="navbar navbar-dark" style="background-color:white;" class = "navBar">
         <div class="dropdown">
                 <div class="circle" id="get_file">
                     <!-- User Profile Image -->
-                  <img class="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpofd4gneOV2yWxiRL3mgtDGpm8wsbWL6otsffwK-7ag_1Ic0Svg">
+                  <img class="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsYT2GHS0PQt5VL-gM4BYjuUsnha3hlXidaj_enzQtDH6nZnV1">
                   <!-- Default Image -->
                   <!-- <i class="fa fa-user fa-5x"></i> -->
                     </button>
@@ -46,7 +47,7 @@
         <!--Input Area-->
         <div id="add-event" class="card card-body shadow p-3 mb-5 bg-white rounded">
             <a href="../html/homepage.html">
-              <img id="logo" src="assets/images/appLogo.PNG" alt="logo">
+              <img id="logo" src="assets/images/squadlogo.jpg" alt="logo">
             </a>
 
             <h4 class="center">Add Event:</h4>
@@ -90,7 +91,7 @@
 
         
         <!--Events Display Container-->
-        <div id="events-display" class="shadow p-3 mb-5 bg-white rounded">
+        <div id="events-display">
 
             <!--Search Events Area-->
             <form class="search" action="/action_page.php">
@@ -100,7 +101,11 @@
         
 
             <!--Events Dump-->
-            <h4 class="card-title">Events</h4>
+            
+            <!-- <img src = "https://dcassetcdn.com/design_img/3011680/556546/556546_16622372_3011680_a7a9bcff_image.jpg" class ="squad-finder"> -->
+            <h4 class="card-title">Todays Events:</h4>
+            <div class = "squad-finder-logo"></div>
+          
             <div id="events-dump">
               <!--Dump Events Here-->
               <!-- <div class="no-highlight">
@@ -152,7 +157,7 @@
  
   <!--Lower Section: API Display-->
   <div id="API-display" class="card shadow p-3 mb-5 bg-white rounded">
-    <h2>Park Details</h2>
+    <div class="card-header" id="parkDetails"><h2>Park Details</h2></div>
     <br>
     <!--Google Maps API-->
     <div id="google-maps-box">
@@ -168,7 +173,7 @@
       <p id="yelp-rating"></p>
       <a href="" target="_blank" id="yelp-reviews-url"></a>
       <p id="yelp-phone-number"></p>
-      <img id="placeholder-photos" src="assets/images/appLogo.PNG">
+      <img id="placeholder-photos" src="assets/images/squadlogoplaceholder.jpg">
       <img id="yelp-photos">
     </div>
   </div>

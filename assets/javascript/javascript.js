@@ -1,10 +1,12 @@
-// ///////////////////////////////////////////////////////////////////////////////////////
-                                     //GOOGLE API SECTION
-// //////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+                                //GOOGLE API SECTION
+////////////////////////////////////////////////////////////////////////////////////////
 
-
+//Global Variables
 var marker;
 var usermarker;
+
+//List Park location Names, latitude & longitude for the map to read.
 var parkLocations = [
     {name: "Freedom Park", lat: 35.193978, lng: -80.842636},
     {name: "Frazier Park", lat: 35.232251, lng: -80.858032},
@@ -14,22 +16,24 @@ var parkLocations = [
     {name: "Kirk Farm Park", lat: 35.321008, lng: -80.731887},
     {name: "Nevin Community Park", lat: 35.302511, lng: -80.834128},
     {name: "Renaissance Park", lat: 35.180768, lng: -80.90757},
-    {name: "Latta Park", lat: 35.209623, lng: -80.850718}
-]
+    {name: "Latta Park", lat: 35.209623, lng: -80.850718},
+];
 
-
+//Begin function to load map with all accessories
 function initMap() {
+
+//Grab UI element to place map and then set the map center to Charlotte, NC coordinates
   var mapCenter = {lat: 35.227085, lng: -80.843124};
   map = new google.maps.Map(document.getElementById('google-maps-display'), {
     center: mapCenter,
-    zoom: 11
+    zoom: 11,
   });   
 
-  
+//Loop through park locations and add a custom marker on the map for each location
   for (i = 0; i < parkLocations.length; i++){
-   mapmarkerFinal = parkLocations[i];
+    mapmarkerFinal = parkLocations[i];
 
-   var marker = new google.maps.Marker({   
+    var marker = new google.maps.Marker({   
       position: mapmarkerFinal,
       map: map,
       icon: "assets/images/urbanpark.png",
@@ -37,16 +41,10 @@ function initMap() {
       optimized: false,
       draggable: false,
       animation: google.maps.Animation.DROP,
-  }); 
-  //marker.addListener('click', toggleYelp); 
-}
+    }); 
+  };
 
-//function toggleYelp(){
-
-
-//}
-
-//Bounce animation for when event is clicked
+//Bounce animation for when event button is clicked
 // function toggleBounce () {
 //   if (marker.getAnimation() != null) {
 //       marker.setAnimation(null);
@@ -55,106 +53,98 @@ function initMap() {
 //   }
 // }
 
-// Add click listener to toggle bounce
-// google.maps.event.addListener(mapmarkerFinal, 'click', function () {
-//   toggleBounce();
-//   infowindow.open(map, mapmarkerFinal);
-//   setTimeout(toggleBounce, 1500);
-// });
 
-
-// Create the search box and link it to the UI element.
-var input = document.getElementById('location-SearchBox');
-var searchBox = new google.maps.places.SearchBox(input);
+// Create the location search box and link it to the UI element.
+  var input = document.getElementById('location-SearchBox');
+  var searchBox = new google.maps.places.SearchBox(input);
 
 // Bias the SearchBox results towards current map's viewport.
-map.addListener('bounds_changed', function() {
-  searchBox.setBounds(map.getBounds());
-});
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
 
-var markers = [];
-// Listen for the event fired when the user selects a prediction and retrieve
-// more details for that place.
-searchBox.addListener('places_changed', function() {
-  var places = searchBox.getPlaces();
 
-  if (places.length == 0) {
-    return;
-  }
+// Listen for the event fired when the user selects a prediction and retrieve more details for that place.
+  var markers = [];
 
-  // Clear out the old markers.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    };
+
+// Clear out the old markers.
   markers.forEach(function(marker) {
     marker.setMap(null);
   });
   markers = [];
 
-  // For each place, get the icon, name and location.
+// For each place, get the icon, name and location.
   var bounds = new google.maps.LatLngBounds();
   places.forEach(function(place) {
     if (!place.geometry) {
       console.log("Returned place contains no geometry");
       return;
-    }
+    };
     var icon = {
       url: place.icon,
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),
-      scaledSize: new google.maps.Size(25, 25)
+      scaledSize: new google.maps.Size(25, 25),
     };
 
-    // Create a marker for each place.
-    markers.push(new google.maps.Marker({
-      map: map,
-      icon: "assets/images/locationmarker.png",
-      title: "Your location",
-      position: place.geometry.location
-    }));
+// Create a marker for each place.
+  markers.push(new google.maps.Marker({
+    map: map,
+    icon: "assets/images/searchlocation.png",
+    title: "Your search location",
+    position: place.geometry.location,
+  }));
 
-    if (place.geometry.viewport) {
+  if (place.geometry.viewport) {
       // Only geocodes have viewport.
-      bounds.union(place.geometry.viewport);
-    } else {
+    bounds.union(place.geometry.viewport);
+  } else {
       bounds.extend(place.geometry.location);
     }
   });
   map.fitBounds(bounds);
 });
 
-
 infoWindow = new google.maps.InfoWindow;
 
-  //Try HTML5 geolocation.
-  function geolocation (){
-   if (navigator.geolocation) {
+//HTML5 geolocation
+function geolocation (){
+  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
-        lng: position.coords.longitude
+        lng: position.coords.longitude,
       };
 
- var usermarker = new google.maps.Marker({   
-    position: pos,
-    map: map,
-    optimized: false,
-    icon: "assets/images/locationmarker.png",
-    title: "Your approx. location",
-    draggable: false,
-    animation: google.maps.Animation.DROP
-  });
+var usermarker = new google.maps.Marker({   
+  position: pos,
+  map: map,
+  optimized: false,
+  icon: "assets/images/locationmarker.png",
+  title: "Your approx. location",
+  draggable: false,
+  animation: google.maps.Animation.DROP,
+});
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Approx. location found.');
-      infoWindow.open(map);
-      map.setCenter(pos);
-    }, function() {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent('Approx. location found.');
+  infoWindow.open(map);
+  map.setCenter(pos);
+  }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
+     });
+    } else {
+//If Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
-  }
-
+  };
  
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -162,135 +152,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Geolocation request denied. \n Please enter your location below!' :
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
-}
+};
+};
 
-}
-
+//Run Geolocation function
 geolocation()
+};
 
-}
-
-// $(document).on("click", "#eventSearch", function () {
-//   $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-//     return false;
-// })
-
-// var eventmarker =    {
-//     position: parkLocations[i],
-//     map: map,
-//     zoom: 15,
-//     optimized: false,
-//     icon: "assets/images/locationmarker.png",
-//     title: parkLocations.name,
-//     draggable: false,
-//     animation: google.maps.Animation.DROP
-// }
-// google.maps.event.addListener(marker, toggleBounce)
-
-// function toggleBounce() {
-
-//   if (marker.getAnimation() != null) {
-//     marker.setAnimation(null);
-//   } else {
-//     marker.setAnimation(google.maps.Animation.BOUNCE);
-//   }
-// }
-//  console.log($(this).children().first().text());
- //});
-
- 
- 
-
-
-
-
-// ///////////////////////////////////////////////////////////////////////////////////////
-//                                     //FIREBASE SECTION
-// //////////////////////////////////////////////////////////////////////////////////////
-
-
-// window.onload = function() {
-//  /*There are 2 inputs and 1 button on the homepage.  
-         
-// //     Button 1 - #submit     
-// //         On "click" needs to authenticate user and password. 
-
-// // */
-// //creates a variable to store input from form
-//      var user = $('#user').val();
-//      var password = $('#password').val();
-//      console.log(user);
-//      console.log(password);
-
-
-// /////////////////////////////////////////////////////////////////////////////
-
-
-// //creates a variable to store input from form for button 1.
-//     var eventCreator = $('#squadLeader').val();
-//     var eventName = $('#inputEventName').val();
-//     var dateTime = $('#DT').val();
-//     var location = $('#location').val();
-//     var eventDescription = $('#eventDescription').val();
-//     var teamRoster = $('#roster').val();
-
-//     console.log(eventCreator);
-//     console.log(eventName);
-//     console.log(dateTime);
-//     console.log(location);
-//     console.log(eventDescription);
-//     console.log(teamRoster)
-
-//     //creates a variable to store input from form for button 2.
-//     var search = $('#searchInput').val();
-//     console.log(search);
-
-
-// ///////////////////////////////////////////////////////////////////////////////////////
-//                                   //GOOGLE API SECTION
-// //////////////////////////////////////////////////////////////////////////////////////
- 
-// //Geolocation
-// var map, infoWindow;
-// function initMap() {
-//   map = new google.maps.Map(document.getElementById('google-maps-display'), {
-//     center: {lat: 35.227, lng: -80.843},
-//     zoom: 6
-//   });
-//   infoWindow = new google.maps.InfoWindow;
-
-//   // Try HTML5 geolocation.
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       var pos = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude
-//       };
-
-//       infoWindow.setPosition(pos);
-//       infoWindow.setContent('Location found.');
-//       infoWindow.open(map);
-//       map.setCenter(pos);
-//     }, function() {
-//       handleLocationError(true, infoWindow, map.getCenter());
-//     });
-//   } else {
-//     // Browser doesn't support Geolocation
-//     handleLocationError(false, infoWindow, map.getCenter());
-//   }
-// }
-
-// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//   infoWindow.setPosition(pos);
-//   infoWindow.setContent(browserHasGeolocation ?
-//                         'Error: The Geolocation service failed.' :
-//                         'Error: Your browser doesn\'t support geolocation.');
-//   infoWindow.open(map);
-// }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//YELP API SECTION
+//                              YELP API SECTION
 //////////////////////////////////////////////////////////////////////////////////////
 
 window.onload = function(){
@@ -340,7 +212,7 @@ window.onload = function(){
               } else {
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               }
-            
+
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
               $("#placeholder-photos").css('display', 'none');
               $("#yelp-photos").css('display', 'inline');
@@ -436,7 +308,7 @@ window.onload = function(){
               } else {
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               }
-              
+
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
               $("#placeholder-photos").css('display', 'none');
               $("#yelp-photos").css('display', 'inline');
@@ -532,7 +404,7 @@ window.onload = function(){
               } else {
               $("#yelp-phone-number").html("Phone Number: " + locationDetails.display_phone);
               }
-           
+
               $("#yelp-photos").attr("src", locationDetails.photos[1]);
               $("#placeholder-photos").css('display', 'none');
               $("#yelp-photos").css('display', 'inline');
@@ -622,7 +494,7 @@ window.onload = function(){
               $("#yelp-rating").html("Rating: " + locationDetails.rating);
               $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
               $("#yelp-reviews-url").attr("href", locationDetails.url);
-              
+
               if (locationDetails.display_phone === "") {
                 $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
               } else {
@@ -671,7 +543,7 @@ window.onload = function(){
                 $("#yelp-rating").html("Rating: " + locationDetails.rating);
                 $("#yelp-reviews-url").html("Explore Reviews" + " (" + locationDetails.review_count + " Reviews)");
                 $("#yelp-reviews-url").attr("href", locationDetails.url);
-
+  
                 if (locationDetails.display_phone === "") {
                   $("#yelp-phone-number").html("Phone Number: (980) 314-1000");
                 } else {
@@ -737,8 +609,9 @@ window.onload = function(){
 })
 
 
+
 ///////////////////////////////////////////////////////////////////////////////////////
-                                    //FIREBASE SECTION
+                             //FIREBASE SECTION
 //////////////////////////////////////////////////////////////////////////////////////
 
   var firebaseConfig = {
@@ -867,7 +740,10 @@ function toDatetimeLocal() {
          description: eventDescription,
          })
     
-    
+         $("#squadLeader").val("");
+         $("#inputEventName").val("");
+         $("#eventDescription").val("");
+
        });
     
     // var eventRef = ref.child(key)
@@ -887,25 +763,32 @@ function toDatetimeLocal() {
           e.preventDefault();
           $('html, body').animate({scrollTop:$(document).height()}, 'slow');
           var userInput = $(this).children().first().text();
-          console.log(userInput);
-          console.log("FAIL AGAINNNN")    
+          console.log(userInput);  
           moveMap()  
           return false;       
        });
-            $(eventButton).append(eventLocation)
-           $(eventButton).append(eventTitle)
+       
+    
+       $(eventButton).append(eventLocation)
       //  $(eventButton).append(eventDate)
       //  $(eventButton).append(eventLeader)
+       $(eventButton).append(eventTitle)
     
        let contentDiv = $("<div>").addClass("content");
         $(eventButton).append(contentDiv)
        $("#events-dump").prepend(eventButton)
     
-       var elm = document.createElement('p')
+       let leaderHeader = document.createElement("p")
+       leaderHeader.id = "eventLeaderInButton"
+       leaderHeader.innerText = event.leader
+       var elm = document.createElement('h1')
        elm.id = 'event-'+childSnapshot.key;
-       elm.innerText = event.leader;
+       $(elm).attr("id", "leaderHeader")
+       elm.innerText = "Your squad leader for this event is:";
        let contentDivSelector = document.querySelector('.content')
        contentDivSelector.appendChild(elm);
+       $(elm).append(leaderHeader)
+
     
        let eventName = document.createElement("p")
        eventName.id = "eventNameInButton"
@@ -942,63 +825,63 @@ function toDatetimeLocal() {
 ////////////////// GOOGLE API INSERT /////////////////////
 //////////////////////////////////////////////////////////
 
-     //click function to find location when event button is clicked and moves map to that park location
-     //set click function
-     $(document).on("click", ".eventButton", function parksLocation () {
+//Click function to find location when event button is clicked and moves map to that park location
+$(document).on("click", ".eventButton", function parksLocation () {
      
-      //set userInput to the selected event location
-      var userInput = $(this).children().first().text();
-        console.log(userInput);
+//Set userInput to the selected event location
+  var userInput = $(this).children().first().text();
+    console.log(userInput);
 
-     //set function to move the map to the park location
-      function moveMap(){   
+//Set function to move the map to the park location
+  function moveMap(){   
 
-    //loop through all the parks and set new variable
-        for (i = 0; i < parkLocations.length; i++){
+//Loop through all the parks and set new variable
+  for (i = 0; i < parkLocations.length; i++){
           
-          parkLocationMatch = parkLocations[i];
-            console.log(parkLocationMatch);
+    parkLocationMatch = parkLocations[i];
+    console.log(parkLocationMatch);
 
-    //if park name matches user input/park location
-        if (userInput == parkLocationMatch.name){
+//If park name matches user input/park location
+  if (userInput == parkLocationMatch.name){
           
-        mapCenter = parkLocationMatch;
-          console.log(parkLocationMatch);
+    mapCenter = parkLocationMatch;
+    console.log(parkLocationMatch);
 
-    //move map center to the location coordinates of the park, set to satellite imagery, and zoom in
-        map = new google.maps.Map(document.getElementById('google-maps-display'),{
-          center: mapCenter,
-          zoom: 18,
-          icon: "assets/images/urbanpark.png",
-          title: parkLocationMatch.name,
-          mapTypeId: 'satellite',
-          optimized: false,
-          animation: google.maps.Animation.BOUNCE,
-        });
-        
+//Move map center to the location coordinates of the park, set to satellite imagery, and zoom in
+  map = new google.maps.Map(document.getElementById('google-maps-display'),{
+    center: mapCenter,
+    zoom: 18,
+    icon: "assets/images/urbanpark.png",
+    title: parkLocationMatch.name,
+    mapTypeId: 'satellite',
+    optimized: false,
+    animation: google.maps.Animation.BOUNCE,
+  });
+    
+//For loop to set the markers for all the other parks if user decides to move the map around 
+  for (i = 0; i < parkLocations.length; i++){
 
-    //for loop to set the markers for all the other parks if user decides to move the map around 
-        for (i = 0; i < parkLocations.length; i++){
+    mapmarkerFinal = parkLocations[i];   
 
-          mapmarkerFinal = parkLocations[i];   
+    var marker = new google.maps.Marker({   
+      position: mapmarkerFinal,
+      map: map,
+      icon: "assets/images/urbanpark.png",
+      title: mapmarkerFinal.name,
+      optimized: false,
+      draggable: false,
+      animation: google.maps.Animation.DROP,        
+    });  
+  };
+  } else {
+      console.log("fail")          
+    };
+  };
+};
 
-          var marker = new google.maps.Marker({   
-            position: mapmarkerFinal,
-            map: map,
-            icon: "assets/images/urbanpark.png",
-            title: mapmarkerFinal.name,
-            optimized: false,
-            draggable: false,
-            animation: google.maps.Animation.DROP,        
-         });  
-        }
-      }
-        else {
-          console.log("fail")          
-        }
-      }
-    }
-    moveMap();
+//Run moveMap function
+moveMap();
+
 ///////////////////////////////////////////////////////////////
 ////////////////// END OF GOOGLE API INSERT ///////////////////
 ///////////////////////////////////////////////////////////////
