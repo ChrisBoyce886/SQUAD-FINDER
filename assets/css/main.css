@@ -59,6 +59,10 @@ body {
     
 }
 
+#parkDetails {
+  z-index: 2;
+}
+
 #map-card-title {
     height: 10%;
     width: 100%;
@@ -71,7 +75,8 @@ body {
 }
 
 #google-maps-display {
-    height: 100%;
+    top: -30px;
+    height: 102%;
     width: 50%; 
       
 }
@@ -80,15 +85,18 @@ body {
     width: 25%;
     position: relative;
     left: 12%;
-    bottom: 60px;
+    bottom: 90px;
 }
 
 #yelp-display {
+  height: 60%;
     width: 50%;
+    top: 85px;
+    z-index: 1;
 }
 
 #logo {
-    width: 100px;
+    width: 200px;
     height: 100px;
     margin: 0 auto;
     
@@ -256,15 +264,14 @@ img {
 }
 
 #yelp-photos {
-  height: 330px;
-  width: 350px;
+  height: 270px;
+  width: 300px;
   display: none;
 }
 
 #placeholder-photos {
-  height: 50%;
-  width: 50%;
-  margin-top: 20%;
+  height: 450px;
+  width: 450px;
 }
 
 #yelp-display {
