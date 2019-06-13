@@ -20,28 +20,11 @@
 </head>
   <body>
     <!-- NAV BAR?-->
-    <div class="navbar navbar-dark" style="background-color:white;" class = "navBar">
-        <div class="dropdown">
-                <div class="circle" id="get_file">
-                    <!-- User Profile Image -->
-                  <img class="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsYT2GHS0PQt5VL-gM4BYjuUsnha3hlXidaj_enzQtDH6nZnV1">
-                  <!-- Default Image -->
-                  <!-- <i class="fa fa-user fa-5x"></i> -->
-                    </button>
-                </div>
-
-                 <div id="myDropdown" class="dropdown-content">
-                    <input type="button">
-                    <input type="file" id="my_file">
-
-                  </div> 
-                <div class="p-image">
-                  <i class="fa fa-camera upload-button"></i>
-                   <input class="file-upload" type="file" accept="image/*"/>
-                </div>
-        
-          </div>  
-    </div>
+    <!-- <div class="navbar navbar-dark" style="background-color:white;" class = "navBar">
+     
+    
+      </a>
+    </div> -->
     <!--Upper Section: Add Events & Display Events-->
     <div id="container">
         
@@ -78,12 +61,7 @@
                 <label for="eventDescription">Event Description:</label>
                 <textarea name="eventDescription" id="eventDescription" class="form-control" rows="3" required="required"></textarea>
                 
-                <label for="roster">Upload Team Roster</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="roster" aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="roster">Choose file</label>
-                  </div>
-                  
+          
 
                 <button id="addBtn" class="btn btn-success" type="submit">Add Event</button>
               </form>
@@ -99,8 +77,10 @@
             <!--Events Dump-->
             
             <!-- <img src = "https://dcassetcdn.com/design_img/3011680/556546/556546_16622372_3011680_a7a9bcff_image.jpg" class ="squad-finder"> -->
-            <h4 class="card-title">Todays Events:</h4>
+            <a href="#" class="myButton">Log-Out</a>
+            <h4 class="card-title">Currently Available Squads:</h4>
             <div class = "squad-finder-logo"></div>
+          
           
             <div id="events-dump">
               <!--Dump Events Here-->

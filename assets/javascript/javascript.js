@@ -629,18 +629,12 @@ window.onload = function(){
 
   $("#create").click(function(event) {
 
-   event.preventDefault()
-
-
-    let users = firebase.database().child('users/')
- console.log("hey")
+     event.preventDefault()
 
      let email = document.querySelector("#createUser")
      let username = document.querySelector("#userName")
      let password = document.querySelector("#createPassword")
     
-
-
  firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
      .then(function(user) {
          displayName = username.value
@@ -650,17 +644,22 @@ window.onload = function(){
 
  })
 
+function writeUserData(displayName, user) {
+     console.log("we're in")
+     firebase.database().ref('users/' + user.uid).set({
+         username: displayName,
+ })
+
 
  $("#submit").click(function(event) {
    event.preventDefault();
   
-   console.log("button clicked")
     let email = document.querySelector("#user")
-     let password = document.querySelector("#password")
+    let password = document.querySelector("#password")
   
-   firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+    firebase.auth().signInWithEmailAndPassword(email.value, password.value)
   
-     firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
 
      if(user) {
        window.location = 'main.html'; 
@@ -671,12 +670,7 @@ window.onload = function(){
    })
 
 
- function writeUserData(displayName, user) {
-     console.log("we're in")
-     firebase.database().ref('users/' + user.uid).set({
-         username: displayName,
- })
-
+ 
 
 
  $("#exampleInputEmail1").val("");
@@ -706,7 +700,7 @@ function toDatetimeLocal() {
     II = ten(date.getMinutes()),
     SS = ten(date.getSeconds())
     ;
-    return YYYY + "-" + MM + "-" + DD + '' + HH + ':' + II + ':' + SS
+    return YYYY + "-" + MM + "-" + DD + '  @  ' + HH + ':' + II + ':' + SS + "  EST"
 }
 
           
@@ -726,6 +720,8 @@ function toDatetimeLocal() {
        let ISOString = new Date(DT.value).toISOString();
        let finalTime = DT.value = new Date(ISOString).toDatetimeLocal();
       //  let name = user.displayName
+
+
        console.log(finalTime)
        console.log(name)
     
@@ -739,6 +735,7 @@ function toDatetimeLocal() {
          eventDate: finalTime,
          location: eventLocation,
          description: eventDescription,
+        //  image: preview
          })
     
          $("#squadLeader").val("");
@@ -756,8 +753,10 @@ function toDatetimeLocal() {
      console.log(event.leader)
        let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key).addClass("rounded")
        let eventTitle = $("<p>").text(childSnapshot.val().name).attr("id", "eventTitle")
+       console.log(eventTitle)
        let eventLeader = $("<p>").text(childSnapshot.val().leader)
        let eventDate = $("<p>").text(childSnapshot.val().eventDate)
+       console.log(eventDate)
        let eventLocation = $("<a href=''>").attr("id", "eventLocation").text(childSnapshot.val().location)
 
        $("#eventLocation").click(function(e){
@@ -779,23 +778,56 @@ function toDatetimeLocal() {
         $(eventButton).append(contentDiv)
        $("#events-dump").prepend(eventButton)
     
+
+       let detailText = document.createElement("p")
+       detailText.id = "detailText"
+       detailText.innerText = "Click to Open/Close Squad Details:  "
        let leaderHeader = document.createElement("p")
        leaderHeader.id = "eventLeaderInButton"
        leaderHeader.innerText = event.leader
        var elm = document.createElement('h1')
        elm.id = 'event-'+childSnapshot.key;
        $(elm).attr("id", "leaderHeader")
-       elm.innerText = "Your squad leader for this event is:";
+       elm.innerText = "Squad leader for this event will be:";
        let contentDivSelector = document.querySelector('.content')
        contentDivSelector.appendChild(elm);
-       $(elm).append(leaderHeader)
-
-    
        let eventName = document.createElement("p")
        eventName.id = "eventNameInButton"
        eventName.innerText = event.name
+       let eventDateInButton = document.createElement("p")
+       eventDateInButton.id = "eventDateInButton"
+       eventDateInButton.innerText = event.eventDate
+       let eventDescriptionInButton = document.createElement("p")
+       eventDescriptionInButton.id = "eventDescriptionInButton"
+       eventDescriptionInButton.innerText = event.description
+       let eventHeaderInButton = document.createElement("p")
+       eventHeaderInButton.id = "eventHeader"
+       eventHeaderInButton.innerText = "This Squad Event is for: "
+       let eventDateHeaderInButton = document.createElement("p")
+       eventDateHeaderInButton.id = "eventDateHeader"
+       eventDateHeaderInButton.innerText = "This Squad will be meeting around: "
+      let checkmark = document.createElement("button")
+      checkmark.id = "checkmark"
+      checkmark.innerText = "✓"
+      let eventDescriptionHeader = document.createElement("p")
+      eventDescriptionHeader.id = "eventDescriptionHeader"
+      eventDescriptionHeader.innerText = "Event Description:  "
+      let xmark = document.createElement("button")
+      xmark.id = "xmark"
+      xmark.innerText = "X"
+
+       $(contentDiv).append(detailText)
+       $(detailText).append(elm)
+        $(elm).append(leaderHeader)
+        $(elm).append(eventHeaderInButton)
        $(elm).append(eventName)
-    
+       $(elm).append(eventDateHeaderInButton)
+       $(elm).append(eventDateInButton)
+       $(elm).append(eventDescriptionHeader)
+       $(elm).append(eventDescriptionInButton)
+       $(elm).append(checkmark)
+       $(elm).append(xmark)
+
        var coll = document.getElementsByClassName(childSnapshot.key);
     
        for (i = 0; i < coll.length; i++) {
@@ -812,8 +844,17 @@ function toDatetimeLocal() {
        }
      })
 
+     $(document).on("click", "#checkmark", function() {
     
+      $(this).toggleClass('buttonClassB');
     
+   })
+    
+   $(document).on("click", "#xmark", function() {
+    
+      $(this).toggleClass('buttonClassA');
+  
+ })
      firebase.auth().onAuthStateChanged(user => {
     
        if(user) {

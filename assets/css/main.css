@@ -36,7 +36,7 @@ body {
 
 #events-display {
     width: 100%;
-    height: 800px;
+    height: 760px; 
     overflow: scroll;
   background: white;  
 }
@@ -288,12 +288,14 @@ img {
   display: none;
 }
 
-.eventButton {
-  margin-top:3%;
-}
 
 #eventTitle {
-  font-size:25px;
+  font-size: 40px;
+  font-family: 'Meera Inimai', sans-serif;
+}
+
+#detailText {
+  color:white;
 }
 #placeholder-photos {
   height: 450px;
@@ -315,6 +317,9 @@ img {
 }
 
 .eventButton {
+
+  margin-left:2%;
+  width:96%;
   margin-top:2%;
   background: #555555
 }
@@ -326,17 +331,16 @@ img {
 }
 
 #eventLocation {
-  font-size: 20px;
+  font-size: 40px;
   font-family: 'Anton', sans-serif;
 }
 
-#eventLeaderInButton {
-  color:white;
-  
-}
+
 
 #eventNameInButton {
   color:white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
 }
 
 .content {
@@ -345,7 +349,94 @@ img {
   
 }
 
-#leaderHeader {
-  color:white;
-  margin-left:-35%;
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
+	background:-moz-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-webkit-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-o-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-ms-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
+	background-color:#77d42a;
+	-moz-border-radius:23px;
+	-webkit-border-radius:23px;
+	border-radius:23px;
+	border:1px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Georgia;
+	font-size:20px;
+	font-weight:bold;
+	padding:14px 68px;
+	text-decoration:none;
+  text-shadow:2px 2px 0px #aade7c;
+  float: right;
+  margin-top:3%;
+  margin-right:5%;
 }
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
+	background:-moz-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-webkit-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-o-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-ms-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
+	background-color:#5cb811;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+#leaderHeader {
+  margin-top: 5%;
+  font-size: 35px;
+  float:left;
+  width:100%; 
+}
+
+#eventLeaderInButton {
+  margin-top: 1%;
+  font-family: 'Open Sans', sans-serif;
+font-size: 25px;
+}
+
+#eventDateInButton {
+  margin-top: 1%;
+  font-family: 'Open Sans', sans-serif;
+font-size: 25px;
+}
+
+#eventDescriptionInButton {
+  margin: 0 auto;
+  width:80%;
+  margin-top: 1%;
+  font-family: 'Open Sans', sans-serif;
+font-size: 25px;
+}
+
+#checkmark {
+  float:right;
+}
+
+.buttonClassB {
+  background: green;
+}
+
+#xmark {
+  float: right;
+  margin-right: 2%;
+}
+
+.buttonClassA {
+  background:red;
+}
+
+
+
