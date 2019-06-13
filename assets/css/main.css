@@ -262,8 +262,9 @@ img {
 }
 
 #placeholder-photos {
-  height: 500px;
-  width: 500px;
+  height: 50%;
+  width: 50%;
+  margin-top: 20%;
 }
 
 #yelp-display {
