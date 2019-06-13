@@ -98,6 +98,7 @@ function initMap() {
 // Create a marker for each place.
   markers.push(new google.maps.Marker({
     map: map,
+    zoom: 20,
     icon: "assets/images/searchlocation.png",
     title: "Your search location",
     position: place.geometry.location,

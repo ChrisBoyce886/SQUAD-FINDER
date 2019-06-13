@@ -24,6 +24,7 @@ body {
 #addBtn {
     margin-top: 20px;
     margin-left: 35%;
+    background-color: rgb(236,27,34) !important;
 }
 
 #search-events {
