@@ -740,7 +740,10 @@ function toDatetimeLocal() {
          description: eventDescription,
          })
     
-    
+         $("#squadLeader").val("");
+         $("#inputEventName").val("");
+         $("#eventDescription").val("");
+
        });
     
     // var eventRef = ref.child(key)
@@ -751,7 +754,7 @@ function toDatetimeLocal() {
        var event = childSnapshot.val(); 
      console.log(event.leader)
        let eventButton = $("<button>").addClass("eventButton").addClass("collapsible").addClass(childSnapshot.key)
-       let eventTitle = $("<p>").text(childSnapshot.val().name)
+       let eventTitle = $("<p>").text(childSnapshot.val().name).attr("id", "eventTitle")
        let eventLeader = $("<p>").text(childSnapshot.val().leader)
        let eventDate = $("<p>").text(childSnapshot.val().eventDate)
        let eventLocation = $("<a href=''>").attr("id", "eventLocation").text(childSnapshot.val().location)
@@ -767,19 +770,25 @@ function toDatetimeLocal() {
        
     
        $(eventButton).append(eventLocation)
-       $(eventButton).append(eventDate)
-       $(eventButton).append(eventLeader)
+      //  $(eventButton).append(eventDate)
+      //  $(eventButton).append(eventLeader)
        $(eventButton).append(eventTitle)
     
        let contentDiv = $("<div>").addClass("content");
         $(eventButton).append(contentDiv)
        $("#events-dump").prepend(eventButton)
     
-       var elm = document.createElement('p')
+       let leaderHeader = document.createElement("p")
+       leaderHeader.id = "eventLeaderInButton"
+       leaderHeader.innerText = event.leader
+       var elm = document.createElement('h1')
        elm.id = 'event-'+childSnapshot.key;
-       elm.innerText = event.leader;
+       $(elm).attr("id", "leaderHeader")
+       elm.innerText = "Your squad leader for this event is:";
        let contentDivSelector = document.querySelector('.content')
        contentDivSelector.appendChild(elm);
+       $(elm).append(leaderHeader)
+
     
        let eventName = document.createElement("p")
        eventName.id = "eventNameInButton"
