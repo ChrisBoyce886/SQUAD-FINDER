@@ -16,23 +16,21 @@ body {
     width: 400px;
     height: 200px;
     margin-right: 100px;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
 }
 
 #about {
    margin: 0 auto;
+   box-shadow: 0 .5rem 1rem rgba(30,30,30,1.15) !important;
 }
+
 
 #login {
     width: auto;
     height: auto;
     margin: 0 auto;
-    padding: 20px;
-    
+    padding: 20px;    
 }
-
-
 
 .form-group {
     margin: 10px;
@@ -64,7 +62,6 @@ body {
     margin: 0 auto;
     color: white !important;
     background-color: rgb(236,27,34) !important;
-
 }
 
 .close {
@@ -73,5 +70,5 @@ body {
 
 .modal-header {
     margin: 0 auto !important;
-    border-bottom-color: white !important
+    border-bottom-color: white !important;
 }
