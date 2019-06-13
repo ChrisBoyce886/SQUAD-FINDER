@@ -2,7 +2,7 @@
                                 //GOOGLE API SECTION
 ////////////////////////////////////////////////////////////////////////////////////////
 
-//Global Variables
+//Global Variables.
 var marker;
 var usermarker;
 
@@ -19,17 +19,17 @@ var parkLocations = [
     {name: "Latta Park", lat: 35.209623, lng: -80.850718},
 ];
 
-//Begin function to load map with all accessories
+//Begin function to load map with all accessories.
 function initMap() {
 
-//Grab UI element to place map and then set the map center to Charlotte, NC coordinates
+//Grab UI element to place map and then set the map center to Charlotte, NC coordinates.
   var mapCenter = {lat: 35.227085, lng: -80.843124};
   map = new google.maps.Map(document.getElementById('google-maps-display'), {
     center: mapCenter,
     zoom: 11,
   });   
 
-//Loop through park locations and add a custom marker on the map for each location
+//Loop through park locations and add a custom marker on the map for each location.
   for (i = 0; i < parkLocations.length; i++){
     mapmarkerFinal = parkLocations[i];
 
@@ -44,7 +44,7 @@ function initMap() {
     }); 
   };
 
-//Bounce animation for when event button is clicked
+//Bounce animation for when event button is clicked.
 // function toggleBounce () {
 //   if (marker.getAnimation() != null) {
 //       marker.setAnimation(null);
@@ -105,7 +105,7 @@ function initMap() {
   }));
 
   if (place.geometry.viewport) {
-      // Only geocodes have viewport.
+// Only geocodes have viewport.
     bounds.union(place.geometry.viewport);
   } else {
       bounds.extend(place.geometry.location);
@@ -116,7 +116,7 @@ function initMap() {
 
 infoWindow = new google.maps.InfoWindow;
 
-//HTML5 geolocation
+//HTML5 geolocation.
 function geolocation (){
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -125,6 +125,7 @@ function geolocation (){
         lng: position.coords.longitude,
       };
 
+//Set User Location marker.
 var usermarker = new google.maps.Marker({   
   position: pos,
   map: map,
@@ -143,7 +144,7 @@ var usermarker = new google.maps.Marker({
       handleLocationError(true, infoWindow, map.getCenter());
      });
     } else {
-//If Browser doesn't support Geolocation
+//If Browser doesn't support Geolocation.
     handleLocationError(false, infoWindow, map.getCenter());
   };
  
@@ -156,10 +157,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 };
 };
 
-//Run Geolocation function
+//Run Geolocation function.
 geolocation()
 };
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
